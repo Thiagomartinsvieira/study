@@ -4,4 +4,4 @@
 -- order by id asc, first_name desc (prioriza o id)
 select id, first_name, email as uemail from users
 where id BETWEEN 20 and 30
-order by first_name desc; 
+order by first_name desc;  
