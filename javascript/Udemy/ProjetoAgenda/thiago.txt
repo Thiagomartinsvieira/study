@@ -1,0 +1,5 @@
+thiagoalagadico
+
+6JUeXHsL7MSvMpMq
+
+mongodb+srv://thiagoalagadico:6JUeXHsL7MSvMpMq@cursojs01.7pwv2en.mongodb.net/?retryWrites=true&w=majority

@@ -1,0 +1,39 @@
+@import url(//db.onlinewebfonts.com/c/84cb021d5f9af287ffff84b61beef6dc?family=clockicons);
+
+*{
+    text-align: center;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+h1, h2{
+    color: white;
+}
+body{
+    background: linear-gradient(to right, #3772FF, #F038FF);
+}
+
+button{
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+#cronometro{
+    padding-bottom: 8px;
+    font-family: "clockicons";
+    font-size: 1.5em;
+}
+
+#iniciar{
+    background-color: #59B87E;
+}
+
+#pausar {
+    background-color: #F17979;
+}
+
+#zerar {
+    background-color:  #FBB629;
+}

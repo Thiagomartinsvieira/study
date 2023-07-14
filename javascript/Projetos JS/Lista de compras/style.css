@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
+
+
+body{
+     background-color: #FCDDF2; 
+}
+
+h1 {
+    text-align: center;
+    font-family: 
+}
+
+h1, li {
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+input {
+    padding: 0.6em;
+    border: 1.5px solid  #21A0A0;
+}
+
+
+
+li{
+    float: inline-end;
+    margin-bottom: 10px;
+}
+
+li button {
+    margin-left: 5px;
+    background-color: red;
+    border: none;
+    cursor: pointer;
+}
+
+#apagar-tudo{
+    padding: 0.6em;
+    cursor: pointer;
+    background-color: #F15152;
+    border: 1.5px solid #21A0A0;
+}
+
+#adicionar-lista{
+    padding: 0.6em;
+    cursor: pointer;
+    background-color: greenyellow;
+    border: 1.5px solid #21A0A0;
+}
+
+

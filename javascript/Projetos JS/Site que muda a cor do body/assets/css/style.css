@@ -1,0 +1,77 @@
+
+*{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+body{
+    background-color: white;
+}
+
+.btn{
+    text-align: center;
+    
+}
+
+.btn input[type="button"]{
+    display: inline-block;
+    margin: 40px 5px;
+    padding: 8px;
+    border: 2px solid black;
+    height: 35px;
+    width: 35px;
+    border-radius: 100%;
+    cursor: pointer;
+
+}
+
+#red{
+    background-color: red;
+}
+
+#blue{
+    background-color: blue;
+}
+
+#yellow{
+    background-color: yellow;
+}
+
+#green{
+    background-color: green;
+}
+
+#white{
+    background-color: white;
+}
+
+#pink{
+    background-color: pink;
+}
+
+
+/* Abaixo Serve Para o text */
+
+#red_text{
+    background-color: red;
+}
+
+#blue_text{
+    background-color: blue;
+}
+
+#yellow_text{
+    background-color: yellow;
+}
+
+#green_text{
+    background-color: green;
+}
+
+#white_text{
+    background-color: white;
+}
+
+#pink_text{
+    background-color: pink;
+}
