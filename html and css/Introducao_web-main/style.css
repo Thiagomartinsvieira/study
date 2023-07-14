@@ -1,0 +1,36 @@
+body{
+    background-color: hsl(207, 79%, 44%);
+    color: white;
+    font-family: monospace;
+    padding: 24px;
+}
+
+.title{
+    font-size: 48px;
+    color: coral;
+}
+
+.list-item{
+    margin-bottom: 24px;
+    font-size: 24px;
+}
+
+input{
+    height: 32px;
+    background-color: transparent;
+    color: white;
+    border-color: coral;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.add-task-button{
+    font-size: 16px;
+    padding: 16px;
+    background-color: coral;
+    border-width: 0px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-family: monospace;
+}

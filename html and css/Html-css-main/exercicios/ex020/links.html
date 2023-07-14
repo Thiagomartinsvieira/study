@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links</title>
+</head>
+<body>
+    <h1>Personalizando Links</h1>
+    <style>
+
+        /* SELETORES PERSONALIZADOS
+            # = 
+            . = class
+            : = pseudo-class
+            :: = pseudo-element
+            > = children
+        */
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a{
+            color: red;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:visited {
+            color: darkred;
+        }
+
+        a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+        a:active {
+            color: yellow;
+        }
+
+        .especial{
+            background-color: aqua;
+        }
+
+       .especial::before{
+            content: '';
+        }
+
+        .especial::after {
+            content:'';
+        }
+    </style>
+    <ul>
+        <a href="https://github.com/Thiagomartinsvieira?tab=repositories" target="_blank">
+            <li> Repositório GitHub </li>
+        </a>
+        <a href="https://www.linkedin.com/in/thiago-martins-vieira-074550192/" class="especial" target="_blank">
+            <li>Meu Linkedin</li>
+        </a>
+        <a href="https://www.instagram.com/thiago1258/" class="especial" target="_blank">
+            <li>Meu Instagram</li>
+        </a>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+body{
+    background-image: linear-gradient(#8095BF, #7289A6, #8C7530, #BFB79F);
+    margin: 0% 10% 10% 10%;
+    
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: #F2F2F2;
+}
+
+h2 {
+    text-align: center;
+    color: #F2F2F2;
+}
+
+h1.comofalar {
+    background-color: #7289A6;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: #F2F2F2;
+
+}
+
+img.thiagofoto {
+    width: 25%;
+    display: block;
+    margin: auto;
+    
+}
+
+ul{
+    background-color: #7289A6;
+    margin-top: -25px;
+    padding-bottom: 50px;
+    padding-top: 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #99E6F2;
+}
+
+a:hover {
+    color: #20448C;
+    text-decoration: underline;
+}
+

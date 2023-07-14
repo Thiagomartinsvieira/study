@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de Tabelas</title>
+</head>
+<body>
+    <h1>Exercício de Tabelas</h1>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        table{
+            width: 500px;
+            border-collapse: collapse;
+        }
+
+        caption{
+            font-size: 1.3em;
+            font-weight: bolder;
+            padding: 8px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        .destaque{
+            background-color: aqua;
+        }
+
+        .cnome{
+            background-color: deepskyblue;
+        }
+
+        col.cgrupo{
+            background-color: yellow;
+        }
+
+        .amarelo{
+            background-color: yellow;
+        }
+
+        .vermelho{
+            background-color: red;
+        }
+    </style>
+    <table>
+        <colgroup>
+            <col class="amarelo">
+            <col class="vermelho" span="">
+            <col class="amarelo">
+           
+        </colgroup>
+        <caption>Cadastro</caption>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Sexo</th>
+            <th scope="col">Idade</th>
+            <th scope="col">Profisão</th>
+        </tr>
+        <tr>
+            <td>Tayla Carolina</td>
+            <td>Feminino</td>
+            <td>27</td>
+            <td>jogadora de Futebol</td>
+        </tr>
+        <tr>
+            <td>Agatha Rumualdo</td>
+            <td>Feminino</td>
+            <td>21</td>
+            <td>Desenvolvedora</td>
+        </tr>
+        <tr>
+            <td>Celso Rumualdo</td>
+            <td>Masculino</td>
+            <td>42</td>
+            <td>Motorista/montador</td>
+        </tr>
+        <tr>
+            <td>Lucas Martins</td>
+            <td>Masculino</td>
+            <td>18</td>
+            <td>Estudante</td>
+        </tr>
+        <tr>
+            <td>Sisleide Costa</td>
+            <td>Feminino</td>
+            <td>59</td>
+            <td>Professora</td>
+        </tr>
+        <tr>
+            <td>Cristiano</td>
+            <td>Masculino</td>
+            <td>37</td>
+            <td>Jogador de Futebol</td>
+        </tr>
+    </table>
+</body>
+</html>
