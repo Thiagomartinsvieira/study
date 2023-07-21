@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 export function Header(){
   const navigate = useNavigate();
+
   const user = null;
 
   function handleLogin(){
@@ -10,7 +11,6 @@ export function Header(){
   }
 
   function handleLogout(){
-    dispatch(logoutUser())
     navigate("/")
   }
 
