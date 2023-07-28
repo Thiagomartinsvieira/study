@@ -65,8 +65,7 @@ export const userSlice = createSlice({
       state.loading = true;
     },
     fetchUsersSuccess: (state, action) => {
-      //console.log(action.payload);
-
+      console.log(action.payload);
       state.users = action.payload;
       state.loading = false;
 
@@ -75,12 +74,22 @@ export const userSlice = createSlice({
       console.log("CAIU NA FAILURE")
       console.log(action.payload);
       state.loading = false;
+    },
+    fetchUsersById: (state) => {
+      console.log("chamou no slice")
+    },
+    fetchUsersByIdSuccess: (state, action) => {
+      console.log("User do id")
+      console.log(action.payload)
+    },
+    fetchUsersByIdFailure: (state) => {
+      console.log("DEU erro no fecth by id")
     }
-  }
+  },
 })
 
 export const { createUser, logoutUser, addAddress, deleteAddress, fetchUsers, 
-  fetchUsersSuccess, fetchUsersFailure
+  fetchUsersSuccess, fetchUsersFailure, fetchUsersById, fetchUsersByIdSuccess, fetchUsersByIdFailure
 } = userSlice.actions;
 
 export default userSlice.reducer;
