@@ -1,3 +1,5 @@
+import FirstComponent from './components/FirstComponent'
+
 import './App.css'
 
 function App() {
@@ -7,6 +9,7 @@ function App() {
 
     <div className='App'>
       <h1>Fundamentos React</h1>
+      <FirstComponent />
     </div>
 
   )
