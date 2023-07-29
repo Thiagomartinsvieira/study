@@ -2,6 +2,7 @@ import './App.css'
 import ManageData from './components/ManageData';
 import Dev from './assets/img2.jpg';
 import ListRender from './components/ListRender';
+import ConditionalRandom from './components/ConditionalRandom';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       </div>
       <ManageData />
       <ListRender />
+      <ConditionalRandom />
     </div>
 
   )
