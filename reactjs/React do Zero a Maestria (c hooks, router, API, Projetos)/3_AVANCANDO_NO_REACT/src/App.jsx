@@ -5,6 +5,7 @@ import ListRender from './components/ListRender';
 import ConditionalRandom from './components/ConditionalRandom';
 import ShowUserName from './components/ShowUserName';
 import { useState } from 'react';
+import CarDetails from './components/CarDetails';
 
 function App() {
   const name = 'Lucas'
@@ -24,6 +25,7 @@ function App() {
       <ListRender />
       <ConditionalRandom />
       <ShowUserName name={userName} />
+      <CarDetails brand='VW' km={10000} color='Blue' />
     </div>
 
   )
