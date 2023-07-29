@@ -1,5 +1,5 @@
 import './App.css'
-
+import ManageData from './components/ManageData';
 import Dev from './assets/img2.jpg';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
       <div>
         <img src={Dev} alt="developer" height='500px' width='500px' />
       </div>
+      <ManageData />
     </div>
 
   )
