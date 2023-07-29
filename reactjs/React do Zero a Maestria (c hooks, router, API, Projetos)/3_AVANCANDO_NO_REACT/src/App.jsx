@@ -25,7 +25,9 @@ function App() {
       <ListRender />
       <ConditionalRandom />
       <ShowUserName name={userName} />
-      <CarDetails brand='VW' km={10000} color='Blue' />
+      <CarDetails brand='VW' km={10000} color='Blue' newCar={true}/>
+      <CarDetails brand='Ford' color='Red' km={203000} newCar={false}/>
+      <CarDetails brand='Fiat' color='White' km={21340} newCar={true}/>
     </div>
 
   )
