@@ -3,8 +3,12 @@ import ManageData from './components/ManageData';
 import Dev from './assets/img2.jpg';
 import ListRender from './components/ListRender';
 import ConditionalRandom from './components/ConditionalRandom';
+import ShowUserName from './components/ShowUserName';
+import { useState } from 'react';
 
 function App() {
+  const name = 'Lucas'
+  const [userName] = useState('Maria')
 
   return (
 
@@ -19,6 +23,7 @@ function App() {
       <ManageData />
       <ListRender />
       <ConditionalRandom />
+      <ShowUserName name={userName} />
     </div>
 
   )
