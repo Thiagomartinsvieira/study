@@ -11,6 +11,12 @@ function App() {
   const name = 'Lucas'
   const [userName] = useState('Maria')
 
+  const cars = [
+    { id: 1, brand: 'ferrari', color: 'Yellow', newCar: true, km: 0 },
+    { id: 2, brand: 'Renault', color: 'black', newCar: false, km: 1300 },
+    { id: 3, brand: 'Chrevrolet', color: 'cian', newCar: true, km: 0 },
+  ]
+
   return (
 
     <div className='App'>
@@ -25,9 +31,17 @@ function App() {
       <ListRender />
       <ConditionalRandom />
       <ShowUserName name={userName} />
-      <CarDetails brand='VW' km={10000} color='Blue' newCar={true}/>
-      <CarDetails brand='Ford' color='Red' km={203000} newCar={false}/>
-      <CarDetails brand='Fiat' color='White' km={21340} newCar={true}/>
+      <CarDetails brand='VW' km={10000} color='Blue' newCar={true} />
+      <CarDetails brand='Ford' color='Red' km={203000} newCar={false} />
+      <CarDetails brand='Fiat' color='White' km={21340} newCar={true} />
+      {cars.map((car) => () => (
+        <CarDetails
+          brand={car.brand}
+          color={color.brand}
+          km={car.km}
+          newCar={car.newCar}
+        />
+      ))}
     </div>
 
   )
