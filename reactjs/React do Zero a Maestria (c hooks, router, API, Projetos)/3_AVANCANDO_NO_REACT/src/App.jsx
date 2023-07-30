@@ -4,9 +4,10 @@ import Dev from './assets/img2.jpg';
 import ListRender from './components/ListRender';
 import ConditionalRandom from './components/ConditionalRandom';
 import ShowUserName from './components/ShowUserName';
-import { Fragment, useState } from 'react';
+import { useState } from 'react';
 import CarDetails from './components/CarDetails';
 import Fragments from './components/Fragments';
+import Container from './components/Container';
 
 function App() {
   //const name = 'Lucas'
@@ -44,6 +45,9 @@ function App() {
         />
       ))}
       <Fragments propFragmentTest='test' />
+      <Container myValue='testing'>
+        <p>This is a content</p>
+      </Container>
     </div>
 
   )
