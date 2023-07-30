@@ -4,11 +4,12 @@ import Dev from './assets/img2.jpg';
 import ListRender from './components/ListRender';
 import ConditionalRandom from './components/ConditionalRandom';
 import ShowUserName from './components/ShowUserName';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import CarDetails from './components/CarDetails';
+import Fragments from './components/Fragments';
 
 function App() {
-  const name = 'Lucas'
+  //const name = 'Lucas'
   const [userName] = useState('Maria')
 
   const cars = [
@@ -42,6 +43,7 @@ function App() {
           newCar={car.newCar}
         />
       ))}
+      <Fragments propFragmentTest='test' />
     </div>
 
   )
