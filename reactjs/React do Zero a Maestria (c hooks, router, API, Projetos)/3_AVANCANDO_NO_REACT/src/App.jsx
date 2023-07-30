@@ -8,6 +8,7 @@ import { useState } from 'react';
 import CarDetails from './components/CarDetails';
 import Fragments from './components/Fragments';
 import Container from './components/Container';
+import ExecuteFunction from './components/ExecuteFunction';
 
 function App() {
   //const name = 'Lucas'
@@ -17,7 +18,11 @@ function App() {
     { id: 1, brand: 'ferrari', color: 'Yellow', newCar: true, km: 0 },
     { id: 2, brand: 'Renault', color: 'black', newCar: false, km: 1300 },
     { id: 3, brand: 'Chrevrolet', color: 'cian', newCar: true, km: 0 },
-  ]
+  ];
+
+  function showMessage() {
+    console.log('Evento do componet')
+  }
 
   return (
 
@@ -38,6 +43,7 @@ function App() {
       <CarDetails brand='Fiat' color='White' km={21340} newCar={true} />
       {cars.map((car) => () => (
         <CarDetails
+          key={car.id}
           brand={car.brand}
           color={color.brand}
           km={car.km}
@@ -48,6 +54,7 @@ function App() {
       <Container myValue='testing'>
         <p>This is a content</p>
       </Container>
+      <ExecuteFunction myFunction={showMessage} />
     </div>
 
   )
