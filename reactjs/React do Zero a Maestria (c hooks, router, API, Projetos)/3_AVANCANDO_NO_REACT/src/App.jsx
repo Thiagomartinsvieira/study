@@ -9,6 +9,8 @@ import CarDetails from './components/CarDetails';
 import Fragments from './components/Fragments';
 import Container from './components/Container';
 import ExecuteFunction from './components/ExecuteFunction';
+import Message from './components/Message';
+import ChangeMessageState from './components/ChangeMessageState';
 
 function App() {
   //const name = 'Lucas'
@@ -22,6 +24,12 @@ function App() {
 
   function showMessage() {
     console.log('Evento do componet')
+  }
+
+  const [message, setMessage] = useState('')
+
+  const handleMessage = (msg) => {
+    setMessage(msg);
   }
 
   return (
@@ -55,6 +63,8 @@ function App() {
         <p>This is a content</p>
       </Container>
       <ExecuteFunction myFunction={showMessage} />
+      <Message  msg={message}/>
+      <ChangeMessageState handleMessage={handleMessage} />
     </div>
 
   )
