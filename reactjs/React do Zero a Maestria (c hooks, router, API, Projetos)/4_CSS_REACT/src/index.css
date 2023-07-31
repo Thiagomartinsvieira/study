@@ -6,3 +6,15 @@ body {
 h1{
   color: beige;
 }
+
+.red-title {
+  background-color: bisque;
+  color: red;
+  padding: 20px;
+  border: 5 solid red;
+}
+
+.title {
+  background-color: white;
+  color: #fff;
+}
