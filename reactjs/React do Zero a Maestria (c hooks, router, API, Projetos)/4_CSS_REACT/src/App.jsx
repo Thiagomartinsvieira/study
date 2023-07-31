@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import './App.css'
 import MyComponent from './components/MyComponent'
+import Title from './components/Title';
 
 function App() {
   const n = 10;
@@ -19,6 +20,9 @@ function App() {
       <h2 style={name === 'Thiago' ? ({ color: 'green', backgroundColor: 'gold' }) : null}>CSS Dinamic</h2>
 
       <h2 className={redTitle ? 'red-title' : 'title'}>this title will have dynamic class</h2>
+
+      <Title />
+      <h2 className='my_title'>testing</h2>
     </div>
 
 
