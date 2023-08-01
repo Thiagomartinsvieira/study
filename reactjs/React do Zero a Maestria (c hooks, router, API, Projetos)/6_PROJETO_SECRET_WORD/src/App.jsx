@@ -2,7 +2,7 @@
 import './App.css'
 
 // React
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 // Data
 import { wordsList } from './data/words'
@@ -19,12 +19,17 @@ const stages = [
 ]
 
 function App() {
-  const [gameStage, setGameStage] = useState(stages[0].name);
-  const [words] = useState(wordsList);
+  const [gameStage, setGameStage] = useState(stages[0].name)
+  const [words] = useState(wordsList)
 
   const [pickedWord, setPickedWord] = useState('')
   const [pickedCategory, setPickedCategory] = useState('')
-  const [letters, setLetters] = useState([]);
+  const [letters, setLetters] = useState([])
+
+  const [guessedLetters, setGuessedLetters] = useState([])
+  const [wrongLetters, setWrongLetters] = useState([])
+  const [guesses, setGuesses] = useState(3)
+  const [score, setScore] = useState(0)
 
   const pickWordAndCategory = () => {
     // pick a radom category
@@ -36,7 +41,7 @@ function App() {
 
     // pick a random word
     const word =
-      words[category][Math.floor(Math.random() * words[category].length)];
+      words[category][Math.floor(Math.random() * words[category].length)]
 
     console.log(word)
 
@@ -46,41 +51,52 @@ function App() {
   // starts the secret Game
   const startGame = () => {
     // pick woed and pick categopry
-    const { word, category } = pickWordAndCategory();
+    const { word, category } = pickWordAndCategory()
 
     // create an array of letters
     let wordLetters = word.split('')
 
-    wordLetters = wordLetters.map((l) => l.toLowerCase());
+    wordLetters = wordLetters.map((l) => l.toLowerCase())
 
-  console.log(word, category)
-  console.log(wordLetters);
+    console.log(word, category)
+    console.log(wordLetters)
 
-  // fill states
-  setPickedWord(word)
-  setPickedCategory(category)
-  setLetters(letters)
+    // fill states
+    setPickedWord(word)
+    setPickedCategory(category)
+    setLetters(wordLetters);
 
-  setGameStage(stages[1].name)
-}
+    setGameStage(stages[1].name)
+  }
 
-// process the letter input
-const verifyLetter = () => {
-  setGameStage(stages[2].name);
-}
+  // process the letter input
+  const verifyLetter = () => {
+    setGameStage(stages[2].name)
+  }
 
-// restarts the game 
-const retry = () => {
-  setGameStage(stages[0].name);
-}
+  // restarts the game
+  const retry = () => {
+    setGameStage(stages[0].name)
+  }
 
-return (
-  <div className='App'>
-    {gameStage === 'start' && <StartScreen startGame={startGame} />}
-    {gameStage === 'game' && <Game verifyLetter={verifyLetter} />}
-    {gameStage === 'end' && <GameOver retry={retry} />}
-  </div>
-)
+  return (
+    <div className="App">
+      {gameStage === 'start' && <StartScreen startGame={startGame} />}
+      {gameStage === 'game' && (
+        <Game
+          verifyLetter={verifyLetter}
+          pickedWord={pickedWord}
+          pickedCategory={pickedCategory}
+          letters={letters}
+          guessedLetters={guessedLetters}
+          wordLetters={wrongLetters}
+          guesses={guesses}
+          score={score}
+        />
+      )}
+      {gameStage === 'end' && <GameOver retry={retry} />}
+    </div>
+  )
 }
 
 export default App
