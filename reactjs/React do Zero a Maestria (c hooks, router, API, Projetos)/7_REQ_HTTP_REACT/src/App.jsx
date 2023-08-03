@@ -6,10 +6,8 @@ import useFetch from './hooks/useFetch'
 function App() {
   const [products, setProducts] = useState([])
 
-  // 4 - custom hook
-  const { data: items } = useFetch(url)
-
-  console.log(data);
+  // 4 - custom 
+  const { data: items, httpConfig } = useFetch(url)
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -29,7 +27,7 @@ function App() {
     fetchData();
   }, []);
 
-  // add products
+  // 2 - add products
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -38,19 +36,23 @@ function App() {
       price,
     };
 
-    const res = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(product),
-    })
+    // const res = await fetch(url, {
+    //   method: 'POST',
+    //   headers: {
+    //     'content-type': 'application/json'
+    //   },
+    //   body: JSON.stringify(product),
+    // })
 
 
-    // 3 - carregamento dinamico
-    const addedProduct = await res.json();
+    // // 3 - carregamento dinamico
+    // const addedProduct = await res.json();
 
-    setProducts((prevProducts) => [...prevProducts, addedProduct])
+    // setProducts((prevProducts) => [...prevProducts, addedProduct])
+
+    // 5 - refatorando post
+
+    httpConfig(product, "POST")
 
     setName('')
     setPrice('')
