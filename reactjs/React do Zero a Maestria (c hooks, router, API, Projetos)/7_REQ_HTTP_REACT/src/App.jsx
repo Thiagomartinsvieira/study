@@ -92,7 +92,8 @@ function App() {
               onChange={(e) => setPrice(e.target.value)}
             />
           </label>
-          <input type="submit" value='create' />
+          {/* 7 - state de loading no post */}
+          {loading && <input type="submit" value='create' />}
         </form>
       </div>
     </div>
