@@ -7,7 +7,7 @@ function App() {
   const [products, setProducts] = useState([])
 
   // 4 - custom 
-  const { data: items, httpConfig, loading } = useFetch(url)
+  const { data: items, httpConfig, loading, error } = useFetch(url)
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -65,7 +65,8 @@ function App() {
       <h1>List of products</h1>
       {/* 6 - Loading */}
       {loading && <P>Carregando dados...</P>}
-      {!loading && (
+      {error && <P>{error}</P>}
+      {!error && (
         <ul>
           {items && items.map((product) => (
             <li key={product.id}>
@@ -93,7 +94,8 @@ function App() {
             />
           </label>
           {/* 7 - state de loading no post */}
-          {loading && <input type="submit" value='create' />}
+          {loading && <input type="submit" disabled value='aguarde...' />}
+          {!loading && <input type="submit" value='create' />}
         </form>
       </div>
     </div>
