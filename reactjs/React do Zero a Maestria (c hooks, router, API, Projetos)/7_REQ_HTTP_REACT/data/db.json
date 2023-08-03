@@ -4,6 +4,26 @@
       "name": "bicicleta",
       "price": "189",
       "id": 1
+    },
+    {
+      "name": "havaiana",
+      "price": "18",
+      "id": 2
+    },
+    {
+      "name": "Skate",
+      "price": "150",
+      "id": 3
+    },
+    {
+      "name": "Camiseta",
+      "price": "24",
+      "id": 4
+    },
+    {
+      "name": "bermuda",
+      "price": "26",
+      "id": 5
     }
   ]
 }
