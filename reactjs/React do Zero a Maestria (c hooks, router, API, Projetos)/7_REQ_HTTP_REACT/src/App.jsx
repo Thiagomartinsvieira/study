@@ -1,9 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 import { useEffect } from 'react'
+import useFetch from './hooks/useFetch'
 
 function App() {
   const [products, setProducts] = useState([])
+
+  // 4 - custom hook
+  const { data: items } = useFetch(url)
+
+  console.log(data);
 
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
@@ -56,7 +62,7 @@ function App() {
     <div className="App">
       <h1>List of products</h1>
       <ul>
-        {products.map((product) => (
+        {items && items.map((product) => (
           <li key={product.id}>
             {product.name} - R$ {product.price}
           </li>
