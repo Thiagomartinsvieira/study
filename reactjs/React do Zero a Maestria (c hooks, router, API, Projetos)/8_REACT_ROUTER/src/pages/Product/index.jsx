@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 import './Product.css'
 
@@ -12,18 +12,22 @@ const Product = () => {
 
     console.log(product)
 
-    return
-    <>
-        <p>Id do produto: {id} </p>
-        {error && <P>Ocorreu um erro...</P>}
-        {loading && <p>Carregando...</p>}
-        {product && (
-            <div>
-                <h1>{product.name}</h1>
-                <p>R$: {product.price}</p>
-            </div>
-        )}
-    </>
-}
+    return (
+        <>
+            <p>ID do produto: {id}</p>
 
-export default Product
+            {error && <p>Ocorreu um erro...</p>}
+            {loading && <p>Carregando produto...</p>}
+            {product && (
+                <div>
+                    <h1>{product.name}</h1>
+                    <p>R${product.price}</p>
+
+                    <Link to={`/products/${product.id}/info`}>Mais informações</Link>
+                </div>
+            )}
+        </>
+    );
+};
+
+export default Product;
