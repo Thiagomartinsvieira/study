@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 
 import './Home.css'
+import Product from '../Product'
 
 const Home = () => {
 
@@ -19,6 +20,7 @@ const Home = () => {
             <li key={item.id}>
               <h2>{item.name}</h2>
               <p>R$: {item.price}</p>
+              <Link to={`/products/${item.id}`}>Detalhes</Link>
             </li>
           ))}
       </ul>
