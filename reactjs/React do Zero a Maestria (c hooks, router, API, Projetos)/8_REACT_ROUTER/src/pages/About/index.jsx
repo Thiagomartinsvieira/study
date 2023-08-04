@@ -2,8 +2,11 @@
 
 const About = () => {
   return (
-    <div>About</div>
-    <p></p>
+    <div>
+      <h3>About</h3>
+      <p>about this page</p>
+    </div>
+
   )
 }
 
