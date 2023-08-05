@@ -1,19 +1,22 @@
 // import { useContext } from "react"
 // import { CounterContext } from "../../context/CounterContext"
 
-import useCounterContext from "../../hooks/UseCounterContext/useCounterContext"
+import { useContext } from "react";
+import { CounterContext } from "../../context/CounterContext";
+import { useTitleColorContext } from "../../hooks/UseTitleColorContext/useTitleColorContext"
 
 const About = () => {
-    // const {counter} = useContext(CounterContext)
-    const { counter } = useCounterContext()
-
+    const { counter } = useContext(CounterContext);
+  
+    
+    const { color } = useTitleColorContext();
+  
     return (
-        <div>
-            <h1>About page</h1>
-            <p>this is my About</p>
-            <p>Value of conter: {counter}</p>
-        </div>
-    )
-}
-
-export default About
+      <div>
+        <h1 style={{ color: color }}>About</h1>
+        <p>Valor contador: {counter}</p>
+      </div>
+    );
+  };
+  
+  export default About;
