@@ -1,20 +1,13 @@
-import { createContext, useState } from "react"
-
-
-const CounterContext = () => {
-  return (
-    <div>CounterContext</div>
-  )
-}
+import { createContext, useState } from "react";
 
 export const CounterContext = createContext();
 
-export const CounterContextProvider = ({children}) => {
-    const [counter, setCounter] = useState(5)
+export const CounterContextProvider = ({ children }) => {
+    const [counter, setCounter] = useState(0);
 
     return (
-        <CounterContext.provider value={{counter, setCounter}}>
+        <CounterContext.Provider value={{ counter, setCounter }}>
             {children}
-        </CounterContext.provider>
-    )
-}
+        </CounterContext.Provider>
+    );
+};
