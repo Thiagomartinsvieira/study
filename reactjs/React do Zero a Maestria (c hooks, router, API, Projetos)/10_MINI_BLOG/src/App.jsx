@@ -1,11 +1,22 @@
 import './App.css'
 
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
+import Home from './pages/Home'
+import About from './pages/About'
+
 function App() {
-  
+
 
   return (
     <div className="App">
-      <h1>Mini Blog</h1>
+      <BrowserRouter>
+        <div className="container">
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   )
 }
