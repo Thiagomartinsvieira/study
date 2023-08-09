@@ -14,13 +14,13 @@ export const useAuthentication = () => {
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(null)
 
-  const [cancelled, setCancelled] = useState(false);
+  const [cancelled, setCancelled] = useState(false)
 
-  const auth = getAuth();
+  const auth = getAuth()
 
   function checkIfIsCancelled() {
     if (cancelled) {
-      return;
+      return
     }
   }
 
@@ -66,8 +66,34 @@ export const useAuthentication = () => {
   }
 
   const logout = () => {
-   checkIfIsCancelled()
+    checkIfIsCancelled()
     signOut(auth)
+  }
+
+  const login = async (data) => {
+    checkIfIsCancelled()
+
+    setLoading(true)
+    setError(true)
+
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password)
+      setLoading(false)
+
+    } catch (error) {
+      let systemErrorMessage
+
+      if (error.message.includes('user-not-found')) {
+        systemErrorMessage = 'User not found'
+      } else if (error.message.includes('wrong-password')) {
+        systemErrorMessage = 'Wrong Password'
+      } else {
+        systemErrorMessage = 'An error occurred please try again later'
+      }
+
+      setError(systemErrorMessage)
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -80,5 +106,6 @@ export const useAuthentication = () => {
     error,
     loading,
     logout,
+    login,
   }
 }
