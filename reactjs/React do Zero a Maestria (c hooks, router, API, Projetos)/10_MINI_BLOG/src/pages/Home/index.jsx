@@ -1,6 +1,6 @@
 import styles from './Home.module.css'
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
-import { useNavigate, Link, Navigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react'
 import PostDetail from '../../components/PostDetail'
 
@@ -13,10 +13,6 @@ const Home = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    if (query) {
-      return Navigate(`/search?q=${query}`)
-    }
 
     if (query) {
       return navigate(`/search?q=${query}`)
