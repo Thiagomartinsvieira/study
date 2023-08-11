@@ -33,7 +33,7 @@ const HookUseState = () => {
             <p>Digite sua idade</p>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={age} onChange={(e) => setAge(e.target.value)} />
-                <p>Vice tem {age} anos </p>
+                <p>Voce tem {age} anos </p>
             <input type="submit" value='enviar'/>
             </form>
             <hr />
