@@ -3,13 +3,15 @@ import './App.css'
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
+import { HookUseContext } from './components/HookUseContext'
 
 function App() {
   
 
   return (
    <div className="App">
-      <h1>React Hooks</h1>
+    <HookUseContext>
+    <h1>React Hooks</h1>
       <BrowserRouter>
         <ul>
           <li>
@@ -24,6 +26,7 @@ function App() {
           <Route path='/about' element={ <About/> } />
         </Routes>
       </BrowserRouter>
+    </HookUseContext>
    </div>
   )
 }
