@@ -1,8 +1,8 @@
 import { useContext } from 'react'
-import { someContext } from '../components/HookUseContext'
+import { SomeContext } from '../components/HookUseContext'
 
 const About = () => {
-  const { contextValue } = useContext(someContext)
+  const { contextValue } = useContext(SomeContext)
 
   return (
     <div>

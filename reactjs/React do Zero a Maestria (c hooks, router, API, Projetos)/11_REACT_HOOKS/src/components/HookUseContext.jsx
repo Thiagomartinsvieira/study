@@ -1,13 +1,13 @@
 import { createContext } from "react";
 
-export const someContext = createContext()
+export const SomeContext = createContext();
 
-export const HookUseContext = ({children}) => {
-    const contextValue = 'testing context'
+export const HookUseContext = ({ children }) => {
+    const contextValue = "testing context";
 
     return (
-        <someContext.provider value={{contextValue}} >
+        <SomeContext.Provider value={{ contextValue }}>
             {children}
-        </someContext.provider>
-    )
-}
+        </SomeContext.Provider>
+    );
+};
