@@ -160,6 +160,43 @@ const likePhoto = async(req, res) => {
 
 }
 
+// commet functionality
+const commentPhoto = async(req, res) => {
+
+    const {id} = req.params
+    const {commet} = req.body
+
+    const reqUser = req.user
+
+    const user = await User.findById(reqUser._id)
+
+    const photo = await Photo.findBy(id)
+
+      // check if photo exists
+      if(!photo) {
+        res.status(404).json({erros: ['Foto não encontrada']})
+        return
+    }
+
+    // Put comment in the array comments
+    const userComment = {
+        commet,
+        userName: user.name,
+        userImage: user.profileImage,
+        userId: user._id
+    }
+
+    photo.comments.push(userComment)
+
+    await photo.save()
+
+    res.status(200).json({
+        commet: userComment,
+        message: 'O comentario foi adicionado com exito.'
+    })
+
+}
+
 module.exports = {
     insertPhoto,
     deletePhoto,
@@ -168,4 +205,5 @@ module.exports = {
     getPhotoByid,
     updatePhoto,
     likePhoto,
+    commentPhoto,
 }
