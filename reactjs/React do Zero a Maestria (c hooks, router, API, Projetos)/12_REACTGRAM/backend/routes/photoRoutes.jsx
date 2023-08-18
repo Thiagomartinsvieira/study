@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 // controller
-const { insertPhoto, deletePhoto, getAllPhotos, getUserPhotos, getPhotoByid, updatePhoto, likePhoto, commentPhoto } = require('../controllers/photoController.jsx')
+const { insertPhoto, deletePhoto, getAllPhotos, getUserPhotos, getPhotoByid, updatePhoto, likePhoto, commentPhoto, searchPhotos } = require('../controllers/photoController.jsx')
 
 // midlewares
 const { photoInsertValidation, photoUpdateValidation, commentValidation } = require('../middlewares/photoValidation.jsx')
@@ -22,6 +22,8 @@ router.post(
 router.delete('/:id', authGuard, deletePhoto)
 router.get('/', authGuard, getAllPhotos)
 router.get('/user/:id', authGuard, getUserPhotos)
+router.get('/search', authGuard, searchPhotos)
+
 router.get('/:id', authGuard, getPhotoByid)
 router.put('/:id',authGuard, photoUpdateValidation(), validate, updatePhoto)
 router.put('/like/:id', authGuard, likePhoto)

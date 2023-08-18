@@ -74,7 +74,7 @@ const getAllPhotos = async (req, res) => {
 }
 
 // Get user photos
-const getUserPhotos = async(req, res) => {
+const getUserPhotos = async (req, res) => {
 
     const { id } = req.params
 
@@ -82,18 +82,18 @@ const getUserPhotos = async(req, res) => {
         .sort([['createdAt', -1]])
         .exec()
 
-   return res.status(200).json(photos)
+    return res.status(200).json(photos)
 }
 
 // Get photo by id
-const getPhotoByid = async(req, res) => {
-    const {id} = req.params
+const getPhotoByid = async (req, res) => {
+    const { id } = req.params
 
     const photo = await Photo.findById(mongoose.Types.ObjectId(id))
 
     // check if photo exists
-    if(!photo) {
-        res.ststus(404).json({erros: ['Foto não encontrada.']})
+    if (!photo) {
+        res.ststus(404).json({ erros: ['Foto não encontrada.'] })
         return
     }
 
@@ -101,8 +101,8 @@ const getPhotoByid = async(req, res) => {
 }
 
 // update a phto
-const updatePhoto = async(req, res) => {
-    const {id} = req.params 
+const updatePhoto = async (req, res) => {
+    const { id } = req.params
     const [title] = req.body
 
     const reqUser = req.user
@@ -110,44 +110,44 @@ const updatePhoto = async(req, res) => {
     const photo = await Photo.findById(id)
 
     // check if photo exists
-    if(!photo) {
-        res.status(404).json({erros: ['Foto não encontrada']})
+    if (!photo) {
+        res.status(404).json({ erros: ['Foto não encontrada'] })
         return
     }
 
     // check if photo belongs to user
-    if(!photo.userId.equals(reqUser._id)) {
-        res.status(422).json({erros: ['Ocoreu um erro, tente novamente mais tarde.']})
+    if (!photo.userId.equals(reqUser._id)) {
+        res.status(422).json({ erros: ['Ocoreu um erro, tente novamente mais tarde.'] })
         return
     }
 
-    if(title) {
+    if (title) {
         photo.title = title
     }
 
     await photo.save()
 
-    res.status(200).json({photo, message: 'Foto atualizada com sucesso'})
+    res.status(200).json({ photo, message: 'Foto atualizada com sucesso' })
 }
 
 // Like functionalitty
-const likePhoto = async(req, res) => {
+const likePhoto = async (req, res) => {
 
-    const {id} = req.params
+    const { id } = req.params
 
     const reqUser = req.user
 
     const photo = await Photo.findById(id)
 
-      // check if photo exists
-      if(!photo) {
-        res.status(404).json({erros: ['Foto não encontrada']})
+    // check if photo exists
+    if (!photo) {
+        res.status(404).json({ erros: ['Foto não encontrada'] })
         return
     }
 
     // checkk if user already liked the photo
-    if(photos.likes(reqUser._id)) {
-        res.ststus(422).json({erros: ['Voce ja curtiu a foto']})
+    if (photos.likes(reqUser._id)) {
+        res.ststus(422).json({ erros: ['Voce ja curtiu a foto'] })
         return
     }
 
@@ -156,15 +156,15 @@ const likePhoto = async(req, res) => {
 
     photo.save()
 
-    res.status(200).json({photoId: id, userId: req._id, message: 'A foto foi curtida.'})
+    res.status(200).json({ photoId: id, userId: req._id, message: 'A foto foi curtida.' })
 
 }
 
 // commet functionality
-const commentPhoto = async(req, res) => {
+const commentPhoto = async (req, res) => {
 
-    const {id} = req.params
-    const {commet} = req.body
+    const { id } = req.params
+    const { commet } = req.body
 
     const reqUser = req.user
 
@@ -172,9 +172,9 @@ const commentPhoto = async(req, res) => {
 
     const photo = await Photo.findBy(id)
 
-      // check if photo exists
-      if(!photo) {
-        res.status(404).json({erros: ['Foto não encontrada']})
+    // check if photo exists
+    if (!photo) {
+        res.status(404).json({ erros: ['Foto não encontrada'] })
         return
     }
 
@@ -197,6 +197,17 @@ const commentPhoto = async(req, res) => {
 
 }
 
+// search photos by title
+const searchPhotos = async (req, res) => {
+
+    const { q } = req.query
+
+    const photos = await Photo.find({ title: new RegExp(q, 'i') }).exec()
+
+    res.status(200).json(photos)
+
+}
+
 module.exports = {
     insertPhoto,
     deletePhoto,
@@ -206,4 +217,5 @@ module.exports = {
     updatePhoto,
     likePhoto,
     commentPhoto,
+    searchPhotos,
 }
