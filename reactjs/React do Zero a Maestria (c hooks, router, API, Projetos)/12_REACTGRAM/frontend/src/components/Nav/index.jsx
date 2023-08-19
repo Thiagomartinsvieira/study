@@ -1,13 +1,12 @@
 import './Nav.css'
 
-// components
+// Components
 import { NavLink, Link } from 'react-router-dom'
 import {
   BsSearch,
-  BsHouseDoor,
+  BsHouseDoorFill,
   BsFillPersonFill,
   BsFillCameraFill,
-  BsHouseDoorFill,
 } from 'react-icons/bs'
 
 // Hooks
@@ -16,16 +15,46 @@ import { useAuth } from '../../hooks/useAuth'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const Nav = () => {
+// Redux
+import { logout, reset } from '../../slices/authSlice'
+
+const Navbar = () => {
   const { auth } = useAuth()
   const { user } = useSelector((state) => state.auth)
 
+  const navigate = useNavigate()
+
+  const dispatch = useDispatch()
+
+  const [query, setQuery] = useState('')
+
+  const handleLogout = () => {
+    dispatch(logout())
+    dispatch(reset())
+
+    navigate('/login')
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+
+    if (query) {
+      return navigate(`/search?q=${query}`)
+    }
+  }
+
   return (
     <nav id="nav">
-      <Link to={'/'}>ReactGram</Link>
-      <form id="search-form">
+      <Link to="/">
+        <h2>ReactGram</h2>
+      </Link>
+      <form id="search-form" onSubmit={handleSearch}>
         <BsSearch />
-        <input type="text" placeholder="pesquisar" />
+        <input
+          type="text"
+          placeholder="Pesquisar"
+          onChange={(e) => setQuery(e.target.value)}
+        />
       </form>
       <ul id="nav-links">
         {auth ? (
@@ -48,11 +77,12 @@ const Nav = () => {
               </NavLink>
             </li>
             <li>
-              <span>Sair</span>
+              <span onClick={handleLogout}>Sair</span>
             </li>
           </>
         ) : (
           <>
+            {' '}
             <li>
               <NavLink to="/login">Entrar</NavLink>
             </li>
@@ -66,4 +96,4 @@ const Nav = () => {
   )
 }
 
-export default Nav
+export default Navbar
