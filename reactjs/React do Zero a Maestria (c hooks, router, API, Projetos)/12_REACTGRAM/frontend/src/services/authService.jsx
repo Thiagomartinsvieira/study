@@ -1,7 +1,6 @@
 import { api, requestConfig } from '../utils/config'
 
-// Register an user
-
+// Register a user
 const register = async (data) => {
   const config = requestConfig('POST', data)
 
@@ -20,13 +19,12 @@ const register = async (data) => {
   }
 }
 
-// logout an user
-
+// Logout a user
 const logout = () => {
   localStorage.removeItem('user')
 }
 
-// Sing in an user
+// Sign in a user
 const login = async (data) => {
   const config = requestConfig('POST', data)
 
@@ -44,8 +42,6 @@ const login = async (data) => {
     console.log(error)
   }
 }
-
-// 
 
 const authService = {
   register,
