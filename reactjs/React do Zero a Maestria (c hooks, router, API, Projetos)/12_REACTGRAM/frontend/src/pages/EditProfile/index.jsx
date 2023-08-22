@@ -70,7 +70,7 @@ const EditProfile = () => {
     await dispatch(updateProfile(userFormData))
 
     setTimeout(() => {
-        dispatch(resetMessage())
+      dispatch(resetMessage())
     }, 2000)
   }
 
