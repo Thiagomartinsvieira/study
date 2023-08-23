@@ -18,6 +18,7 @@ import {
   publishPhoto,
   resetMessage,
   getUserPhotos,
+  deletePhoto,
 } from '../../slices/photoSlice'
 import Message from '../../components/Message'
 
@@ -62,6 +63,13 @@ const Profile = () => {
       image,
     }
 
+    // Reset component message
+    function resetComponentMessage() {
+      setTimeout(() => {
+        dispatch(resetMessage())
+      }, 2000)
+    }
+
     // Build form data
     const formData = new FormData()
 
@@ -75,9 +83,14 @@ const Profile = () => {
 
     setTitle('')
 
-    setTimeout(() => {
-      dispatch(resetMessage())
-    }, 2000)
+    resetComponentMessage()
+  }
+
+  // Delete a photo
+  const handleDelete = (id) => {
+    dispatch(deletePhoto(id))
+    
+    resetComponentMessage()
   }
 
   if (loading) {
