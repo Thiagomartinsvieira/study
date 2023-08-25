@@ -152,7 +152,7 @@ const productDetails = {
 
 const { name: productName, price, category: productCategory, color } = productDetails
 
-console.log(`O nome do produto é ${name}, custa R$${price}, pertence a categoria ${productCategory} e é da cor ${color}`)
+console.log(`O nome do produto é ${name}, custa R$${price}, pertence a categoria ${productCategory} e e da cor ${color}`)
 
 // 7 spread operator 
 
@@ -198,3 +198,26 @@ console.log(shirt.productWithDiscount(50))
 const shoe = new Product('Shoe green', 120)
 
 console.log(shoe.productWithDiscount(20))
+
+// 9 Inheritance
+class ProductWithAttributes extends Product {
+    constructor(name, price, colors) {
+        super(name, price)
+        this.colors = color
+    }
+
+    showColors(){
+        console.log('As cores sao: ')
+        this.colors.forEach((color) => {
+            console.log(color)
+        })
+    }
+}
+
+const hat = new ProductWithAttributes('chapeu', 29.99, ['black', 'blue', 'red'])
+
+console.log(hat.name)
+
+console.log(hat.productWithDiscount(30))
+
+console.log(hat.showColors)
