@@ -5,11 +5,12 @@ const initialState = {
   photos: [],
   photo: {},
   error: false,
-  sucess: false,
+  success: false,
+  loading: false,
   message: null,
 }
 
-//publish user photo
+// Publish an user's photo
 export const publishPhoto = createAsyncThunk(
   'photo/publish',
   async (photo, thunkAPI) => {
@@ -17,9 +18,10 @@ export const publishPhoto = createAsyncThunk(
 
     const data = await photoService.publishPhoto(photo, token)
 
-    //check for erros
+    console.log(data.errors)
+    // Check for errors
     if (data.errors) {
-      return thunkAPI.rejectWithValue(data.erros[0])
+      return thunkAPI.rejectWithValue(data.errors[0])
     }
 
     return data
@@ -28,15 +30,25 @@ export const publishPhoto = createAsyncThunk(
 
 // Get user photos
 export const getUserPhotos = createAsyncThunk(
-  'photo/userPhotos',
+  'photo/userphotos',
   async (id, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token
 
     const data = await photoService.getUserPhotos(id, token)
 
+    console.log(data)
+    console.log(data.errors)
+
     return data
   }
 )
+
+// Get photo
+export const getPhoto = createAsyncThunk('photo/getphoto', async (id) => {
+  const data = await photoService.getPhoto(id)
+
+  return data
+})
 
 // Delete a photo
 export const deletePhoto = createAsyncThunk(
@@ -44,11 +56,12 @@ export const deletePhoto = createAsyncThunk(
   async (id, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token
 
-    const data = await photoService.updatephoto(id, token)
+    const data = await photoService.deletePhoto(id, token)
 
-    //check for erros
+    console.log(data.errors)
+    // Check for errors
     if (data.errors) {
-      return thunkAPI.rejectWithValue(data.erros[0])
+      return thunkAPI.rejectWithValue(data.errors[0])
     }
 
     return data
@@ -61,28 +74,16 @@ export const updatePhoto = createAsyncThunk(
   async (photoData, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token
 
-    const data = await photoService.deletePhoto(
+    const data = await photoService.updatePhoto(
       { title: photoData.title },
       photoData.id,
       token
     )
 
-    //check for erros
+    // Check for errors
     if (data.errors) {
-      return thunkAPI.rejectWithValue(data.erros[0])
+      return thunkAPI.rejectWithValue(data.errors[0])
     }
-
-    return data
-  }
-)
-
-// Get photo by id
-export const getPhoto = createAsyncThunk(
-  'photo/getPhoto',
-  async (id, thunkAPI) => {
-    const token = thunkAPI.getState().auth.user.token
-
-    const data = await photoService.getPhoto(id, token)
 
     return data
   }
@@ -94,17 +95,17 @@ export const like = createAsyncThunk('photo/like', async (id, thunkAPI) => {
 
   const data = await photoService.like(id, token)
 
-  //check for erros
+  // Check for errors
   if (data.errors) {
-    return thunkAPI.rejectWithValue(data.erros[0])
+    return thunkAPI.rejectWithValue(data.errors[0])
   }
 
   return data
 })
 
-// Add comments to a photo
+// Add comment to a photo
 export const comment = createAsyncThunk(
-  'foto/comment',
+  'photo/comment',
   async (photoData, thunkAPI) => {
     const token = thunkAPI.getState().auth.user.token
 
@@ -114,25 +115,39 @@ export const comment = createAsyncThunk(
       token
     )
 
-    //check for erros
+    // Check for errors
     if (data.errors) {
-      return thunkAPI.rejectWithValue(data.erros[0])
+      return thunkAPI.rejectWithValue(data.errors[0])
     }
 
     return data
   }
 )
 
-export const getPhotos = createAsyncThunk('photo/getall', async (_, thunkAPI) => {
-  const token = thunkAPI.getState().auth.user.token
-
-  const data = await photoService.getPhotos(token)
+// Get all photos
+export const getPhotos = createAsyncThunk('photo/getall', async () => {
+  const data = await photoService.getPhotos()
 
   return data
 })
 
+// Search photos by title
+export const searchPhotos = createAsyncThunk(
+  'photo/search',
+  async (query, thunkAPI) => {
+    const token = thunkAPI.getState().auth.user.token
+
+    const data = await photoService.searchPhotos(query, token)
+
+    console.log(data)
+    console.log(data.errors)
+
+    return data
+  }
+)
+
 export const photoSlice = createSlice({
-  name: 'photo',
+  name: 'publish',
   initialState,
   reducers: {
     resetMessage: (state) => {
@@ -156,7 +171,7 @@ export const photoSlice = createSlice({
       .addCase(publishPhoto.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload
-        state.photo = {}
+        state.photo = null
       })
       .addCase(getUserPhotos.pending, (state) => {
         state.loading = true
@@ -168,17 +183,16 @@ export const photoSlice = createSlice({
         state.error = null
         state.photos = action.payload
       })
-      .addCase(publishPhoto.pending, (state) => {
+      .addCase(getPhoto.pending, (state) => {
         state.loading = true
         state.error = null
       })
-      .addCase(publishPhoto.fulfilled, (state, action) => {
+      .addCase(getPhoto.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.loading = false
         state.success = true
         state.error = null
         state.photo = action.payload
-        state.photos.unshift(state.photo)
-        state.message = 'Foto publicada com sucesso!'
       })
       .addCase(deletePhoto.pending, (state) => {
         state.loading = true
@@ -188,6 +202,7 @@ export const photoSlice = createSlice({
         state.loading = false
         state.success = true
         state.error = null
+
         state.photos = state.photos.filter((photo) => {
           return photo._id !== action.payload.id
         })
@@ -197,11 +212,11 @@ export const photoSlice = createSlice({
       .addCase(deletePhoto.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload
-        state.photo = {}
+        state.photo = null
       })
       .addCase(updatePhoto.pending, (state) => {
         state.loading = true
-        state.error = false
+        state.error = null
       })
       .addCase(updatePhoto.fulfilled, (state, action) => {
         state.loading = false
@@ -220,17 +235,7 @@ export const photoSlice = createSlice({
       .addCase(updatePhoto.rejected, (state, action) => {
         state.loading = false
         state.error = action.payload
-        state.photo = {}
-      })
-      .addCase(getPhoto.pending, (state) => {
-        state.loading = true
-        state.error = false
-      })
-      .addCase(getPhoto.fulfilled, (state, action) => {
-        state.loading = false
-        state.success = true
-        state.error = null
-        state.photo = action.payload
+        state.photo = null
       })
       .addCase(like.fulfilled, (state, action) => {
         state.loading = false
@@ -238,12 +243,12 @@ export const photoSlice = createSlice({
         state.error = null
 
         if (state.photo.likes) {
-          state.photo.likes.push(action.payload.userID)
+          state.photo.likes.push(action.payload.userId)
         }
 
         state.photos.map((photo) => {
-          if (photo._id === action.payload.photoID) {
-            return photo.likes.push(action.payload.userID)
+          if (photo._id === action.payload.photoId) {
+            return photo.likes.push(action.payload.userId)
           }
           return photo
         })
@@ -269,9 +274,21 @@ export const photoSlice = createSlice({
       })
       .addCase(getPhotos.pending, (state) => {
         state.loading = true
-        state.error = false
+        state.error = null
       })
       .addCase(getPhotos.fulfilled, (state, action) => {
+        console.log(action.payload)
+        state.loading = false
+        state.success = true
+        state.error = null
+        state.photos = action.payload
+      })
+      .addCase(searchPhotos.pending, (state) => {
+        state.loading = true
+        state.error = null
+      })
+      .addCase(searchPhotos.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.loading = false
         state.success = true
         state.error = null
