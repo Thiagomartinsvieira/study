@@ -220,4 +220,4 @@ console.log(hat.name)
 
 console.log(hat.productWithDiscount(30))
 
-console.log(hat.showColors)
+hat.showColors
