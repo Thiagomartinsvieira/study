@@ -109,3 +109,19 @@ const notAvailableUsers = users.filter((user) => !user.available)
 console.log(availableUsers)
 
 console.log(notAvailableUsers)
+
+// 4 Map
+const products = [
+    {name: 'camisa', price: 10.99, category: 'Roupas'}, 
+    {name: 'Panela', price: 29.99, category: 'Ultencilios'}, 
+    {name: 'Pijama', price: 16.99, category: 'Roupas'}, 
+    {name: 'Abajur', price: 10.99, category: 'Eletro'}, 
+]
+
+products.map((product) => {
+    if(product.category === 'Roupas') {
+        product.onSale = true
+    }
+})
+
+console.log(products)
