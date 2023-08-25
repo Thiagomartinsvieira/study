@@ -2,7 +2,7 @@
 var x = 10
 var y = 15
 
-if(y > 10) {
+if (y > 10) {
     var x = 5
     console.log(x)
 }
@@ -12,7 +12,7 @@ console.log(x)
 let a = 10
 let b = 15
 
-if(b > 10) {
+if (b > 10) {
     let a = 5
     console.log(a)
 }
@@ -21,7 +21,7 @@ let i = 100
 
 console.log(a)
 
-for(let i = 0; i < 5; i++) {
+for (let i = 0; i < 5; i++) {
     console.log(i)
 }
 
@@ -50,7 +50,7 @@ console.log(sum(5, 5))
 console.log(arrowSum(5, 5))
 
 const greeting = (name) => {
-    if(name) {
+    if (name) {
         return 'Ola ' + name + '!'
     } else {
         return 'olá'
@@ -70,7 +70,7 @@ const user = {
     name: 'Giulia',
     sayUserName() {
         var self = this
-        setTimeout(function() {
+        setTimeout(function () {
             console.log(self)
             console.log('Username' + self.name)
 
@@ -93,14 +93,14 @@ const arr = [1, 2, 3, 4, 5]
 console.log(arr)
 
 const highNumbers = arr.filter((n) => {
-    if(n >= 3) {
+    if (n >= 3) {
         return n
     }
 })
 
 console.log(highNumbers)
 
-const users = [{name: 'Thiago', available: true}, {name: 'Lucas', available: true}, {name: 'Sisleide', available: true}, {name: 'Vitoria', available: false}]
+const users = [{ name: 'Thiago', available: true }, { name: 'Lucas', available: true }, { name: 'Sisleide', available: true }, { name: 'Vitoria', available: false }]
 
 
 const availableUsers = users.filter((user) => user.available)
@@ -112,14 +112,14 @@ console.log(notAvailableUsers)
 
 // 4 Map
 const products = [
-    {name: 'camisa', price: 10.99, category: 'Roupas'}, 
-    {name: 'Panela', price: 29.99, category: 'Ultencilios'}, 
-    {name: 'Pijama', price: 16.99, category: 'Roupas'}, 
-    {name: 'Abajur', price: 10.99, category: 'Eletro'}, 
+    { name: 'camisa', price: 10.99, category: 'Roupas' },
+    { name: 'Panela', price: 29.99, category: 'Ultencilios' },
+    { name: 'Pijama', price: 16.99, category: 'Roupas' },
+    { name: 'Abajur', price: 10.99, category: 'Eletro' },
 ]
 
 products.map((product) => {
-    if(product.category === 'Roupas') {
+    if (product.category === 'Roupas') {
         product.onSale = true
     }
 })
@@ -153,3 +153,24 @@ const productDetails = {
 const { name: productName, price, category: productCategory, color } = productDetails
 
 console.log(`O nome do produto é ${name}, custa R$${price}, pertence a categoria ${productCategory} e é da cor ${color}`)
+
+// 7 spread operator 
+
+const a1 = [1, 2, 3]
+const a2 = [4, 5, 6]
+
+const a3 = [...a1, ...a2]
+
+console.log(a3)
+
+const a4 = [0, ...a1, ...a2, 7, 8, 'Thigas']
+
+console.log(a4)
+
+const carName = {name: 'Gol'}
+const carBrand = { brand: 'vw' }
+const otherInfos = {km: 10000, price: 49000}
+
+const car = {...carName, ...carBrand, ...otherInfos}
+
+console.log(car)
