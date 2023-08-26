@@ -1,4 +1,5 @@
 
+import { createContext } from 'react';
 import './App.css'
 // 6 - Desestruturando props
 import Destructuring, { Category } from './components/Destructuring';
@@ -12,11 +13,22 @@ import SecondComponent from './components/SecondComponent';
 // 6 - useState
 import State from './components/State';
 
+// 11 - use context
+import Context from './components/Context';
+
 // 9 - Type
 type textOrNull = string | null
 
 type fixed = 'this' | 'or' | 'that'
 
+// 10 - context
+interface IAppContext {
+  language: string,
+  framework: string,
+  projects: number,
+}
+
+export const AppContext = createContext<IAppContext | null>(null)
 
 
 function App() {
@@ -33,13 +45,23 @@ function App() {
 
   // 9 - type
   const myText: textOrNull = 'Tem algum text aqui'
-  let mySecondText: textOrNull = null
+  const mySecondText: textOrNull = null
 
   // mySecondText = 'ops!'
 
   const testingFixed: fixed = 'that'
 
+  // 10 - context
+  const contextValue: IAppContext = {
+    language: 'TypeScript',
+    framework: 'React',
+    projects: 4,
+  };
+
+
+
   return (
+    <AppContext.Provider value={contextValue}>
     <div className="app">
       <h1>TypeScript with React</h1>
       <h2>Name: {name}</h2>
@@ -67,7 +89,9 @@ function App() {
       {mySecondText && 
         <p>Tem texto na variavel</p>
       }
+      <Context />
     </div>
+    </AppContext.Provider>
   );
 }
 
