@@ -13,6 +13,8 @@ import TaskList from './components/TaskList'
 import { ITask } from './interfaces/Task'
 
 function App() {
+
+  const [taskList, setTaskList] = useState<ITask[]>([])
   
   return (
    <div>
@@ -20,11 +22,15 @@ function App() {
       <main className={styles.main}>
         <div>
           <h2>what will you do?</h2>
-          <TaskForm btnText='Create task' />
+          <TaskForm 
+          btnText='Create task'  
+          taskList={taskList}
+          setTaskList={setTaskList}
+          />
         </div>
         <div>
           <h2>Your tasks:</h2>
-          <TaskList />
+          <TaskList taskList={taskList}/>
         </div>
       </main>
     <Footer />
