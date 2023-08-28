@@ -11,6 +11,7 @@ import TaskList from './components/TaskList';
 
 // interfaces
 import { ITask } from './interfaces/Task';
+import Modal from './components/Modal';
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]);
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <div>
+      <Modal />
       <Header />
       <main className={styles.main}>
         <div>
