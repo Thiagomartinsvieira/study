@@ -1,16 +1,27 @@
-import styles from './Modal.module.css'
+import React from 'react';
 
-type Props = {}
+import styles from './Modal.module.css';
 
-const Modal = (props: Props) => {
-  return (
-    <div id='modal'>
-        <div></div>
-        <div>
-            <h2>Modal text</h2>
-        </div>
-    </div>
-  )
+interface Props {
+  children: React.ReactNode;
+  title: string;
 }
 
-export default Modal
+const Modal = ({ children, title }: Props) => {
+  const closeModal = (e: React.MouseEvent): void => {
+    const modal = document.getElementById('modal');
+    modal!.classList.add('hide');
+  };
+
+  return (
+    <div id="modal" className="hide">
+      <div className={styles.fade} onClick={closeModal}></div>
+      <div className={styles.modal}>
+        <h2>{title}</h2>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+export default Modal;
