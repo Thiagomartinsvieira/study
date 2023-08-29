@@ -16,25 +16,23 @@ const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
   return (
     <>
       {taskList.length > 0 ? (
-        taskList.map((task) => (
-          <div key={task.id} className={styles.task}>
+        taskList.map((task, index) => (
+          <div key={index} className={styles.task}>
             <div className={styles.details}>
-              <h4> {task.title} </h4>
-              <p>Difficult: {task.difficult}</p>
+              <h4>{task.title}</h4>
+              <p>Dificuldade: {task.difficult}</p>
             </div>
             <div className={styles.actions}>
               <i className="bi bi-pencil" onClick={() => handleEdit(task)}></i>
               <i
                 className="bi bi-trash"
-                onclick={() => {
-                  handleDelete(task.id);
-                }}
+                onClick={() => handleDelete(task.title)}
               ></i>
             </div>
           </div>
         ))
       ) : (
-        <p>Is not have registred tasks</p>
+        <p>There are no tasks registered</p>
       )}
     </>
   );
