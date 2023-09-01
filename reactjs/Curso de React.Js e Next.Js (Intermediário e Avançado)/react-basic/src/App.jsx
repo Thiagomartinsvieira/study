@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import './App.css'
 
-
-
 function App() {
   const peoples = [
     { id: 1, name: 'Thiago', age: 23, job: 'Developer' },
