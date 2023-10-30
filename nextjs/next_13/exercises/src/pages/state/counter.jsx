@@ -1,4 +1,4 @@
-import CounterDisplay from "@/components/CounterDisplay"
+import NumberDisplay from "@/components/NumberDisplay" 
 import { useState } from "react"
 
 export default function counter() {
@@ -13,7 +13,7 @@ export default function counter() {
             flexDirection: 'column'
         }}>
             <h1>Counter</h1>
-            <CounterDisplay number={counter} />
+            <NumberDisplay number={counter} />
             <div>
                 <button onClick={() => setCounter(counter + 1)} style={{ padding: '2px' }}>+</button>
                 <button onClick={() => setCounter(counter - 1)} style={{ padding: '2px' }}>-</button>

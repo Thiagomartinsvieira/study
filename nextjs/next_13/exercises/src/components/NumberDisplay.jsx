@@ -1,4 +1,4 @@
-export default function CounterDisplay(props) {
+export default function NumberDisplay(props) {
     return (
         <div style={{
             height: '50px',

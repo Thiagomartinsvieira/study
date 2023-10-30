@@ -1,4 +1,4 @@
-function mega(qtde = 6, numbers = []) {
+export function mega(qtde = 6, numbers = []) {
     if(qtde < 6 && qtde > 60) {
         throw 'invalid quantity!'
     }
@@ -14,5 +14,3 @@ function mega(qtde = 6, numbers = []) {
         return mega(qtde, numbers)
     }
 }
-
-console.log(mega(15))
