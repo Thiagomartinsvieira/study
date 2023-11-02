@@ -5,12 +5,10 @@ const search = () => {
   const router = useRouter()
   const id = router.query.id
 
-
-
   return (
     <div>
       <h1>Routes / {id} / search !!!</h1>
-      <Link href='/routes'>
+      <Link href="/routes">
         <button>to back</button>
       </Link>
     </div>

@@ -3,7 +3,7 @@ import React from 'react'
 const anotherRoute = () => {
   return (
     <div>
-        <h1>_Another Route</h1>
+      <h1>_Another Route</h1>
     </div>
   )
 }
