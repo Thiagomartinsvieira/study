@@ -22,6 +22,8 @@ export default class DoorModel {
     get selected() {
       return this.#selected;
     }
+
+    get openDoor()
   
     markOff() {
       const selected = false;
