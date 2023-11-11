@@ -15,7 +15,7 @@ import DoorModel from "../model/door"
         if(samAsModified) {
             return doorModified
         } else {
-           return doorModified.openDoor ? currentDoor :  currentDoor.markOff()
+           return doorModified.open ? currentDoor :  currentDoor.markOff()
         }
     })
  }

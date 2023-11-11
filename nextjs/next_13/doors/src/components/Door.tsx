@@ -4,17 +4,17 @@ import Gift from '../components/Gift'
 
 interface DoorProps {
   value: DoorModel;
-  onchange: (newDoor: DoorModel) => void
+  onchange: (newDoor: DoorModel) => void;
 }
 
 const Door = (props: DoorProps) => {
   const door  = props.value; 
-  const selected = door.selected && !door.openDoor ? styles.selected : '';
+  const selected = door.selected && !door.open ? styles.selected : '';
 
   const toogleSelection = e => props.onchange(door.toggleSelection()) 
-  const openDoor = e => {
+  const open = e => {
     e.stopPropagation()
-    props.onchange(door.openDoor()) 
+    props.onchange(door.open()) 
   }
 
   const renderDoor = () => {
@@ -22,7 +22,7 @@ const Door = (props: DoorProps) => {
       <div className={styles.door}>
         <div className={styles.number}>{door.number}</div>
         <div className={styles.handle} 
-        onClick={openDoor}></div>
+        onClick={open}></div>
       </div>
     )
   } 

@@ -1,8 +1,7 @@
 import styles from '../styles/Card.module.css'
-import React from 'react'
 
 interface CardProps {
-  bgcolor: string
+  bgcolor?: string
   children?: any
 }
 
