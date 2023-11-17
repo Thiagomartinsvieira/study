@@ -7,7 +7,7 @@ export async function getStaticPaths() {
     });
 
     return {
-        fallback: false, // 404
+        fallback: true, // 404
         paths,
     };
 }
@@ -29,11 +29,15 @@ const StudentById = (props) => {
     return (
         <div>
             <h1>Students Details</h1>
-            <ul>
-                <li>{student.id}</li>
-                <li>{student.name}</li>
-                <li>{student.email}</li>
-            </ul>
+            {student ?
+                <ul>
+                    <li>{student.id}</li>
+                    <li>{student.name}</li>
+                    <li>{student.email}</li>
+                </ul>    
+            : false    
+        }
+
         </div>
     );
 };
