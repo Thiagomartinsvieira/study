@@ -6,7 +6,6 @@ export default class QuestionModel {
     #statement: string
     #answers: ResponseModel[]
     #gotItRight: boolean
-    // #answered: boolean
 
     constructor(id: number, statement: string, answers: ResponseModel[], gotItRight = false) {
         this.#id = id
@@ -28,6 +27,10 @@ export default class QuestionModel {
         return this.#gotItRight
     }
 
+    get unanswered() {
+        return !this.answered
+    }
+
     get answered(){
         for(let response of this.#answers) {
             if(response.reveled) return true
@@ -35,16 +38,28 @@ export default class QuestionModel {
         return false
     }
 
+    respondWith(indice: number): QuestionModel {
+        const gotItRight = this.#answers[indice]?.certain
+        const answers = this.#answers.map((response, i) => {
+            const responseSelected = indice === i 
+            const mustReveal = responseSelected || response.certain
+            return mustReveal ? response.toReveal() : response
+        })
+
+        return new QuestionModel(this.id, this.statement, answers, gotItRight)
+    }
+
     shuffleAnswers(): QuestionModel{
         let shuffleAnswers = shuffle(this.#answers)
         return new QuestionModel(this.#id, this.#statement, shuffleAnswers, this.#gotItRight)
-    }    
+    }   
 
     toObject(){
         return {
             id: this.#id,
             statement: this.#statement,
             answers: this.#answers.map(resp => resp.toObject()),
+            answered: this.answered,
             gotItRight: this.#gotItRight,
         }
     }

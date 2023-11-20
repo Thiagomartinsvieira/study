@@ -7,7 +7,7 @@ const getQuestionById = (req, res) => {
 
     if (singleQuestionOrNothing.length === 1) {
         const questionSelected = singleQuestionOrNothing[0].shuffleAnswers();
-        res.status(200).json(questionSelected);
+        res.status(200).json(questionSelected.toObject());
     } else {
         res.status(404).send();
     }

@@ -27,6 +27,10 @@ export default class ResponseModel {
         return this.#reveled
     }
 
+    toReveal(){
+        return new ResponseModel(this.#value, this.#certain, true)
+    }
+
     toObject() {
         return {
             value: this.#value,
