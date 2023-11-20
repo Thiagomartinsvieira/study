@@ -30,7 +30,7 @@ export default class ResponseModel {
     toObject() {
         return {
             value: this.#value,
-            certain: this.#reveled,
+            certain: this.#certain,
             reveled: this.#reveled,
         }
     }
