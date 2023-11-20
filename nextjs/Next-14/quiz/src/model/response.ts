@@ -9,6 +9,14 @@ export default class ResponseModel {
         this.#reveled = reveled
     }
 
+    static certain(value: string) {
+        return new ResponseModel(value, true)
+    }
+
+    static wrong(value: string) {
+        return new ResponseModel(value, false)
+    }
+
     get value() {
         return this.#value
     }
@@ -17,6 +25,14 @@ export default class ResponseModel {
     }
     get reveled() {
         return this.#reveled
+    }
+
+    toObject() {
+        return {
+            value: this.#value,
+            certain: this.#reveled,
+            reveled: this.#reveled,
+        }
     }
 
 }
