@@ -1,7 +1,16 @@
-import questions from "../questionsDatabase"
-export default (req, res) => {
+import questions from "../questionsDatabase";
 
-    questions
+const getQuestionById = (req, res) => {
+    const idSelected = +req.query.id;
 
-    res.status(200).json(questions[0].toObject())
-}
+    const singleQuestionOrNothing = questions.filter(question => question.id === idSelected);
+
+    if (singleQuestionOrNothing.length === 1) {
+        const questionSelected = singleQuestionOrNothing[0];
+        res.status(200).json(questionSelected);
+    } else {
+        res.status(404).send();
+    }
+};
+
+export default getQuestionById;
