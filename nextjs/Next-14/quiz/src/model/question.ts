@@ -1,11 +1,13 @@
+import ResponseModel from "./response"
+
 export default class QuestionModel {
     #id: number
     #statement: string
-    #answers: any[]
+    #answers: ResponseModel[]
     #gotItRight: boolean
     // #answered: boolean
 
-    constructor(id: number, statement: string, answers: any[], gotItRight = false) {
+    constructor(id: number, statement: string, answers: ResponseModel[], gotItRight = false) {
         this.#id = id
         this.#statement = statement
         this.#answers = answers
@@ -26,7 +28,9 @@ export default class QuestionModel {
     }
 
     get answered(){
-        // FIXME: implement this method
+        for(let response of this.#answers) {
+            if(response.reveled) return true
+        } 
         return false
     }
 
