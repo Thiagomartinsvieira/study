@@ -13,6 +13,7 @@ const letters = [
 
 interface QuestionProps {
     value: QuestionModel
+    timeToResponse?: number
     responseProvided: (indice: number) => void
     timeIsOver: () => void
 }
@@ -38,7 +39,9 @@ const Question = (props: QuestionProps) => {
   return (
     <div className={styles.question}>
         <Statement text={question.statement} />
-        <Timer duration={10} timeIsOver={props.timeIsOver} />
+        <Timer duration={props.timeToResponse ?? 10} 
+        timeIsOver={props.timeIsOver} 
+        />
         {renderAnswers()}
     </div>
   )
