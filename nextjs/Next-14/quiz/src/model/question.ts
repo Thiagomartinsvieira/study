@@ -31,7 +31,12 @@ export default class QuestionModel {
         return !this.answered
     }
 
-    get answered(){
+
+    get notAnswered(){
+        return !this.answered
+    }
+
+    get answered(){    
         for(let response of this.#answers) {
             if(response.reveled) return true
         } 

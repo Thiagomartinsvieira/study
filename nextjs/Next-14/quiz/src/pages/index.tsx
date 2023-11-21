@@ -17,8 +17,13 @@ export default function Home() {
   const [question, setQuestion] = useState(questionMock)
 
   const  responseProvided =  (indice: number) => {
-    console.log(indice)
     setQuestion(question.respondWith(indice))
+  } 
+
+  const  timeIsOver =  () => {
+   if(question.notAnswered) {
+     setQuestion(question.respondWith(-1))
+   }
   } 
 
 
@@ -30,7 +35,9 @@ export default function Home() {
       height: '100vh',
     }}>
       <Question value={question} 
-        responseProvided={responseProvided} />
+        responseProvided={responseProvided}
+        timeIsOver={timeIsOver}
+         />
     </div>
   )
 }
