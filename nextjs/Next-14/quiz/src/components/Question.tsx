@@ -25,7 +25,7 @@ const Question = (props: QuestionProps) => {
         return question.answers.map((response, i) => {
             return (
                 <Response 
-                key={i}
+                key={`${question.id}-${i}`}
                 value={response}
                 indice={i}
                 letter={letters[i].value}
@@ -39,7 +39,7 @@ const Question = (props: QuestionProps) => {
   return (
     <div className={styles.question}>
         <Statement text={question.statement} />
-        <Timer duration={props.timeToResponse ?? 10} 
+        <Timer key={question.id} duration={props.timeToResponse ?? 10} 
         timeIsOver={props.timeIsOver} 
         />
         {renderAnswers()}

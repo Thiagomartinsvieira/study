@@ -11,11 +11,11 @@ interface ResponseProps {
 
 const Response = (props: ResponseProps) => {
     const response = props.value
+    const responseRevealed = response.reveled ? styles.responseRevealed : ''
   return (
-    <div className={styles.response} 
+    <div className={`${responseRevealed} ${styles.contentResponse}`} 
     onClick={() => props.responseProvided(props.indice)}>
-        <div className={styles.contentResponse}>
-            {!response.reveled ? (
+        <div className={styles.contentResponse}>      
                 <div className={styles.front}>
                 <div className={styles.letter}
                 style={{backgroundColor: props.colorBackgroundLetter }}>
@@ -25,7 +25,6 @@ const Response = (props: ResponseProps) => {
                     {response.value}
                 </div>
             </div>
-            ): (
         <div className={styles.verse}>
                 {response.certain ? (
                 <div className={styles.certain}>
@@ -39,8 +38,6 @@ const Response = (props: ResponseProps) => {
                 </div>
                 )}
             </div>
-            )}
-            
             
         </div>
     </div>

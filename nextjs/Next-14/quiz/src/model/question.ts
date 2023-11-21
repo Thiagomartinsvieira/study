@@ -60,7 +60,7 @@ export default class QuestionModel {
     }   
 
     static createUsingObject(obj: QuestionModel):QuestionModel {
-        const answers = obj.answers.map((resp => ResponseModel.createUsingObject(resp)))
+        const answers = obj.answers.map(resp => ResponseModel.createUsingObject(resp))
         return new QuestionModel(obj.id, obj.statement, answers, obj.gotItRight)
     } 
 

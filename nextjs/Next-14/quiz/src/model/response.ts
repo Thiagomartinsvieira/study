@@ -31,9 +31,6 @@ export default class ResponseModel {
         return new ResponseModel(this.#value, this.#certain, true)
     }
     
-    static createUsingObject(obj: ResponseModel):ResponseModel {
-        return new ResponseModel(obj.value, obj.certain, obj.reveled)
-    } 
 
     toObject() {
         return {
