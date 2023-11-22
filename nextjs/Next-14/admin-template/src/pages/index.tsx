@@ -1,14 +1,14 @@
+import Layout from '@/components/templeate/Layout'
 import React from 'react'
 
-const Home = () => {
+const index = () => {
   return (
-    <div className={`
-      flex justify-center items-center h-screen
-      bg-gradient-to-r from-green-500 to-blue-500
-    `}>
-      <h1>Admin</h1>
+    <div>
+      <Layout title='Initial Page' subtitle='we are building an admin template'>
+          <h1>Content!!!</h1>
+      </Layout>
     </div>
   )
 }
 
-export default Home
+export default index
