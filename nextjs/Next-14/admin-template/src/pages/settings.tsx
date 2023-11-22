@@ -1,14 +1,15 @@
 import Layout from '@/components/template/Layout'
 import React from 'react'
 
-const index = () => {
+const settings = () => {
   return (
     <div>
-      <Layout title='Initial Page' subtitle='we are building an admin template'>
+      <Layout title='settings' 
+          subtitle='customize the system here'>
           <h1>Content!!!</h1>
       </Layout>
     </div>
   )
 }
 
-export default index
+export default settings

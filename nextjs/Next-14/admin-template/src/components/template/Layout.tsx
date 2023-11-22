@@ -10,13 +10,11 @@ interface LayoutProps {
 
 const Layout = (props: LayoutProps) => {
   return (
-    <div className={`
-        flex h-screen w-screen 
-    `}>
+    <div className={`flex h-screen w-screen`}>
         <LateralMenu />
         <div className={`
         flex flex-col w-full p-7
-        bg-gray-300`
+        bg-gray-300 dark:bg-gray-800`
         }>
         <Header title={props.title} subtitle={props.subtitle} />
         <Content>
