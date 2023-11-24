@@ -7,10 +7,11 @@ const notifications = () => {
 
   return (
     <div>
-      <Layout title='Notifications' 
-          subtitle='Here you manage your notifications'>
-
-            <button onClick={changeTheme}>Change theme</button>
+      <Layout
+        title="Notifications"
+        subtitle="Here you manage your notifications"
+      >
+        <button onClick={changeTheme}>Change theme</button>
       </Layout>
     </div>
   )
