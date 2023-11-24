@@ -21,8 +21,8 @@ const LateralMenu = () => {
         <Logo />
       </div>
       <ul className="flex-grow">
-        <MenuItem url="/" text="start" icon={HomeIcon} />
-        <MenuItem url="/adjustment" text="Start" icon={AdjustmentIcon} />
+        <MenuItem url="/" text="Start" icon={HomeIcon} />
+        <MenuItem url="/adjustment" text="Adjustment" icon={AdjustmentIcon} />
         <MenuItem url="/notifications" text="Notifications" icon={BellIcon} />
       </ul>
       <ul>
