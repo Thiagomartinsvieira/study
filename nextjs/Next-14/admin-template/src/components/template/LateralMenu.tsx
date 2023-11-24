@@ -1,14 +1,32 @@
-import { AdjustmentIcon, BellIcon, HomeIcon } from "../icons"
+import { AdjustmentIcon, BellIcon, HomeIcon, LogoutIcon } from "../icons"
+import Logo from "./Logo"
 import MenuItem from "./MenuItem"
 
 
 const LateralMenu = () => {
     return (
-      <aside>
-          <ul>
+      <aside className="flex flex-col">
+        <div className={`
+          flex flex-col items-center justify-center  
+          bg-gradient-to-r from-indigo-500 to-purple-800
+          h-20 w-20
+        `}>
+            <Logo />
+        </div>
+          <ul className="flex-grow">
             <MenuItem url="/" text="start" icon={HomeIcon} />
             <MenuItem url="/adjustment" text="Start" icon={AdjustmentIcon} />
             <MenuItem url="/notifications" text="Notifications" icon={BellIcon} />
+          </ul>
+          <ul>
+            <MenuItem 
+              text="logout" icon={LogoutIcon}
+              onclick={() => console.log('logout')} 
+              className={`
+                text-red-600
+                hover:bg-red-400 hover:text-white
+              `}
+              />
           </ul>
       </aside>
     )
