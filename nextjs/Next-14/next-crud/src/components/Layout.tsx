@@ -6,7 +6,7 @@ interface LayoutProps {
   children: any
 }
 
-const Layout = (props) => {
+const Layout = (props: LayoutProps) => {
   return (
     <div
       className={`
