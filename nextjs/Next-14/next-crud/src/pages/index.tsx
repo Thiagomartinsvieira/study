@@ -1,3 +1,5 @@
+import Button from '@/components/Button'
+import Form from '@/components/Form'
 import Layout from '@/components/Layout'
 import Table from '@/components/Table'
 import Client from '@/core/Client'
@@ -10,9 +12,9 @@ export default function Home() {
     new Client('Lucas', 19, '4'),
   ]
 
-  const SelectCustomer = (client: Client) => {
-    
-  }
+  const SelectCustomer = (client: Client) => {}
+
+  const DeleteCustomer = (client: Client) => {}
 
   return (
     <div
@@ -23,7 +25,17 @@ export default function Home() {
       `}
     >
       <Layout title="Simple Registration">
-        <Table clients={clients} SelectCustomer={SelectCustomer}></Table>
+        <div className="flex justify-end">
+          <Button color="green" className="mb-4">
+            New Client
+          </Button>
+        </div>
+        <Table
+          clients={clients}
+          SelectCustomer={SelectCustomer}
+          DeleteCustomer={DeleteCustomer}
+        ></Table>
+        <Form client={clients[0]}></Form>
       </Layout>
     </div>
   )
