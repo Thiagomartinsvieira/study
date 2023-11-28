@@ -3,8 +3,8 @@ import { AttentionIcon } from '@/components/icons'
 import useAuth from '@/data/hook/useAuth'
 import React, { useState } from 'react'
 
-const authentication = () => {
-  const { user, loginGoogle } = useAuth()
+const Authentication = () => {
+  const { register, login, loginGoogle } = useAuth()
 
   const [mode, setMode] = useState<'login' | 'register'>('login')
   const [email, setEmail] = useState('')
@@ -16,13 +16,18 @@ const authentication = () => {
     setTimeout(() => setError(null), timeInSeconds * 1000)
   }
 
-  const submit = () => {
-    if (mode === 'login') {
-      console.log('login')
-      displayError('An error has occurred')
-    } else {
-      console.log('register')
-      displayError('An error has occurred')
+  const submit = async () => {
+    try {
+      if (mode === 'login') {
+        await login(email, password)
+      } else {
+        await register(email, password)
+      }
+      // If login or register is successful, clear the error
+      setError(null)
+    } catch (e) {
+      displayError(e?.message ?? 'An error has occurred!')
+      console.error(e)
     }
   }
 

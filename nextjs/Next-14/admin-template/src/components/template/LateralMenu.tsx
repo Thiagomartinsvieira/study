@@ -1,8 +1,12 @@
+import useAuth from '@/data/hook/useAuth'
 import { AdjustmentIcon, BellIcon, HomeIcon, LogoutIcon } from '../icons'
 import Logo from './Logo'
 import MenuItem from './MenuItem'
 
 const LateralMenu = () => {
+
+  const { logout } = useAuth()
+
   return (
     <aside
       className={`
