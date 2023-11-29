@@ -2,36 +2,18 @@ import Button from '@/components/Button'
 import Form from '@/components/Form'
 import Layout from '@/components/Layout'
 import Table from '@/components/Table'
-import Client from '@/core/Client'
-import { useState } from 'react'
+import useClients from '@/hooks/useClient'
 
 export default function Home() {
-  const clients = [
-    new Client('Ana', 34, '1'),
-    new Client('Bia', 18, '2'),
-    new Client('Thiago', 24, '3'),
-    new Client('Lucas', 19, '4'),
-  ]
-
-  const SelectCustomer = (client: Client) => {
-    setClient(client)
-    setVisible('form')
-  }
-
-  const DeleteCustomer = (client: Client) => {}
-
-  const saveClient = (client: Client) => {
-    console.log(client)
-    setVisible('table')
-  }
-
-  const newClient = (client: Client) => {
-    setClient(Client.empty())
-    setVisible('form')
-  }
-
-  const [visible, setVisible] = useState<'table' | 'form'>('table')
-  const [client, setClient] = useState<Client>(Client.empty())
+  const {
+    client,
+    clients,
+    newClient,
+    SelectCustomer,
+    DeleteCustomer,
+    saveClient,
+    tableVisible,
+  } = useClients()
 
   return (
     <div
@@ -43,7 +25,7 @@ export default function Home() {
     >
       i
       <Layout title="Simple Registration">
-        {visible === 'table' ? (
+        {tableVisible ? (
           <>
             <div className="flex justify-end">
               <Button color="green" className="mb-4" onClick={newClient}>
@@ -60,7 +42,7 @@ export default function Home() {
           <Form
             client={client}
             clientChanged={saveClient}
-            canceld={() => setVisible('table')}
+            canceld={tableVisible}
           />
         )}
       </Layout>
