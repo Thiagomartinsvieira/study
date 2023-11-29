@@ -3,6 +3,7 @@ import Form from '@/components/Form'
 import Layout from '@/components/Layout'
 import Table from '@/components/Table'
 import Client from '@/core/Client'
+import { useState } from 'react'
 
 export default function Home() {
   const clients = [
@@ -12,9 +13,25 @@ export default function Home() {
     new Client('Lucas', 19, '4'),
   ]
 
-  const SelectCustomer = (client: Client) => {}
+  const SelectCustomer = (client: Client) => {
+    setClient(client)
+    setVisible('form')
+  }
 
   const DeleteCustomer = (client: Client) => {}
+
+  const saveClient = (client: Client) => {
+    console.log(client)
+    setVisible('table')
+  }
+
+  const newClient = (client: Client) => {
+    setClient(Client.empty())
+    setVisible('form')
+  }
+
+  const [visible, setVisible] = useState<'table' | 'form'>('table')
+  const [client, setClient] = useState<Client>(Client.empty())
 
   return (
     <div
@@ -24,18 +41,28 @@ export default function Home() {
         text-white
       `}
     >
+      i
       <Layout title="Simple Registration">
-        <div className="flex justify-end">
-          <Button color="green" className="mb-4">
-            New Client
-          </Button>
-        </div>
-        <Table
-          clients={clients}
-          SelectCustomer={SelectCustomer}
-          DeleteCustomer={DeleteCustomer}
-        ></Table>
-        <Form client={clients[0]}></Form>
+        {visible === 'table' ? (
+          <>
+            <div className="flex justify-end">
+              <Button color="green" className="mb-4" onClick={newClient}>
+                New Client
+              </Button>
+            </div>
+            <Table
+              clients={clients}
+              SelectCustomer={SelectCustomer}
+              DeleteCustomer={DeleteCustomer}
+            ></Table>
+          </>
+        ) : (
+          <Form
+            client={client}
+            clientChanged={saveClient}
+            canceld={() => setVisible('table')}
+          />
+        )}
       </Layout>
     </div>
   )
