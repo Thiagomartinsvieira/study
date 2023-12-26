@@ -1,12 +1,12 @@
-var calculator = require('./calculator')
+// var calculator = require('./calculator')
 
-console.log(calculator.mult(10,20))
-console.log(calculator.sum(10,20))
-console.log(calculator.div(10,20))
-console.log(calculator.sub(10,20))
-console.log(calculator.name)
-calculator.name = 'Lucas calculator'
-console.log(calculator.name)
+// console.log(calculator.mult(10,20))
+// console.log(calculator.sum(10,20))
+// console.log(calculator.div(10,20))
+// console.log(calculator.sub(10,20))
+// console.log(calculator.name)
+// calculator.name = 'Lucas calculator'
+// console.log(calculator.name)
 
 
 
