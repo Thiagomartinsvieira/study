@@ -5,4 +5,4 @@ const connection = new Sequelize('guide_questions', 'node_user', '1234', {
     dialect: 'mysql', 
 });
 
-module.exports = connection;
+module.exports = connection; 

@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const connection = require('./database/database')
+const question = require('./database/Question');
+const Question = require('./database/Question');
+const Response = require('./database/Response');
 // Database 
 
 connection
@@ -23,7 +26,13 @@ app.use(bodyParser.json());
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('index'); 
+    question.findAll({raw: true, order: [
+        ['id', 'DESC'] // ASC = crescent || DESC =  descending
+    ]}).then(questions => {
+        res.render('index', {
+            questions: questions
+        }); 
+    })
 });
 
 app.get('/to_ask', (req, res) => {
@@ -31,9 +40,49 @@ app.get('/to_ask', (req, res) => {
 })
 
 app.post('/savequestion', (req, res) => {
+
     var title = req.body.title;
     var description = req.body.description;
-    res.send('Form received! title 2' + title + ' ' + 'description' + description)
+
+    Question.create({
+        title: title,
+        description: description 
+    }).then(() => {
+        res.redirect('/');
+    })
+});
+
+app.get('/question/:id', (req, res) => {
+    var id = req.params.id;
+    question.findOne({
+        where: {id: id}
+    }).then(question => {
+        if(question != undefined) { // found
+
+            Response.findAll({
+                where: {questionID: question.id},
+                order: [ ['id', 'DESC'] ]
+            }).then(answers => {
+                res.render('question', {
+                    question: question,
+                    answers: answers
+                });
+            });            
+        } else { // not found 
+            res.redirect('/');
+        }
+    });
+})
+
+app.post('/answer', (req, res) => {
+    var body = req.body.body
+    var questionID = req.body.question
+    Response.create({
+        body: body,
+        questionID: questionID
+    }).then(() => {
+        res.redirect('/question/' + questionID) 
+    });
 });
 
 app.listen(8080, () => {
