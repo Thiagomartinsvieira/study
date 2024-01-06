@@ -8,9 +8,16 @@
             <h2>New Article</h2>
         </div>
         <div class="card-body">
-            <form method="post" action="/categories/save">
+            <form method="post" action="/articles/save">
                 <input class="form-control" type="text" name="title" placeholder="define article title"><br>
                 <textarea class="form-control" placeholder="Write the article here" name="body" id="article"></textarea>
+                <br>
+                <label>Categories</label><hr/>
+                <select name="category" class="form-control">
+                    <% categories.forEach((category) => { %>
+                    <option value="<%= category.id %>"><%= category.title %></option>
+                    <%  }) %>
+                </select>
                 <br>
                 <button class="btn btn-success">Register</button>
             </form>
