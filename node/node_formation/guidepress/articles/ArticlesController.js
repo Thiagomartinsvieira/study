@@ -35,4 +35,28 @@ router.post('/articles/save', (req, res) => {
     });
 });
 
+router.post('/articles/delete', (req, res) => {
+    console.log('Received delete request');
+    var id = req.body.id;
+
+    console.log('Deleting category with ID:', id);
+
+    if (isNaN(id)) {
+        console.log('Not a number');
+        res.redirect('/admin/articles');
+    } else {
+        Article.destroy({
+            where: {
+                id: id
+            }
+        }).then(() => {
+            console.log('Category deleted successfully');
+            res.redirect('/admin/articles');
+        }).catch(error => {
+            console.error('Error deleting category:', error);
+            res.redirect('/admin/articles');
+        });
+    }
+});
+
 module.exports = router;
