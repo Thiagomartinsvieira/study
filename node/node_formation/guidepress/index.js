@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
+const session = require('express-session')
 
 const CategoriesController = require('./categories/CategoriesController'); 
 const ArticlesController = require('./articles/ArticlesController');
@@ -13,6 +14,12 @@ const User = require('./users/User');
 
 // View engine
 app.set('view engine', 'ejs');
+
+// sessions
+app.use(session({
+    secret: "chjkvjksdbjksdjhklasdhjkladjkasdjjkdfbsdh",
+    cookie: {maxAge: 30000}
+}))
 
 // Static
 app.use(express.static('public'));
@@ -34,7 +41,7 @@ connection
 // Routes
 app.use('/', CategoriesController);
 app.use('/', ArticlesController);
-app.use('/', UsersController); // Corrected import path
+app.use('/', UsersController); 
 
 app.get("/", (req, res) => {
     Article.findAll({
