@@ -3,19 +3,21 @@ const app = express();
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
 
-const CategoriesController = require('./categories/CatergoriesController');
+const CategoriesController = require('./categories/CategoriesController'); 
 const ArticlesController = require('./articles/ArticlesController');
+const UsersController = require('./users/usersController'); 
 
 const Article = require('./articles/Article');
 const Category = require('./categories/Category');
+const User = require('./users/User');
 
-// view engine
+// View engine
 app.set('view engine', 'ejs');
 
-// static
+// Static
 app.use(express.static('public'));
 
-// body parser
+// Body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -23,30 +25,29 @@ app.use(bodyParser.json());
 connection
     .authenticate()
     .then(() => {
-        console.log('Connection made successfully!');
+        console.log('Database connection made successfully!');
     })
     .catch((error) => {
-        console.log(error);
+        console.error('Unable to connect to the database:', error);
     });
 
 // Routes
 app.use('/', CategoriesController);
 app.use('/', ArticlesController);
+app.use('/', UsersController); // Corrected import path
 
-app.get('/', async (req, res) => {
-    try {
-        const articles = await Article.findAll({
-            order: [['id', 'DESC']]
+app.get("/", (req, res) => {
+    Article.findAll({
+        order:[
+            ['id','DESC']
+        ],
+        limit: 4
+    }).then(articles => {
+        Category.findAll().then(categories => {
+            res.render("index", {articles: articles, categories: categories});
         });
-
-        const categories = await Category.findAll();
-
-        res.render('index', { articles, categories });
-    } catch (error) {
-        console.error(error);
-        res.redirect('/');
-    }
-});
+    });
+})
 
 app.get('/:slug', async (req, res) => {
     try {
@@ -63,7 +64,7 @@ app.get('/:slug', async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.redirect('/');
+        res.status(500).send('Internal Server Error');
     }
 });
 
@@ -83,10 +84,11 @@ app.get('/category/:slug', async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.redirect('/');
+        res.status(500).send('Internal Server Error');
     }
 });
 
-app.listen(8080, () => {
-    console.log('Server is running!');
+const PORT = 8080;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
