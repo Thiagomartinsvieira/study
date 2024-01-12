@@ -11,3 +11,4 @@ console.log(name)
 console.log(prof)
 console.log(companny)
 console.log(Curse)
+
