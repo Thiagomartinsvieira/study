@@ -1,12 +1,12 @@
 class Movie{
-    constructor(){
-
-        this.movie = '';
-        this.year = 2000;
-        this.genre = '';
-        this.director = '';
+    constructor(title, year, genre, director, duration){
+        this.title = title;
+        this.year = year;
+        this.genre = genre;
+        this.director = director;
+        this.duration = duration;
         this.actors = [];
-        this.duration = 0;
+        
     }
 
     Play(){
@@ -25,16 +25,36 @@ class Movie{
         console.log('Closed X')
     }
 
+    token(){
+        console.log(`Title: ${this.title}`);
+        // console.log(`Relase year: ${this.year}`);
+        // console.log(`Genre: ${this.genre}`);
+        // this.Play();
+        // this.Advance();
+    }
+
 }
 
-var Avengers = new Movie();
-var Hul = new Movie();
-var starWars = new Movie();
+var Avengers = new Movie("Avangers 2", 2014, 'Action', 'Somebody', '2h');
+
+Avengers.token();
+
+// console.log(Avengers.title);
+// console.log(Avengers.year);
+// console.log(Avengers.genre);
+
+var Batman = new Movie('Batman', 2009, 'Action', 'Somebody 2', '2h30m');
+
+Batman.token();
 
 
+var Wonka = new Movie('Wonka', 2023, 'Comedi', 'Somebody 3', '2h10m');
 
+Wonka.token();
 
-
+// console.log(Batman.title);
+// console.log(Batman.genre);
+// console.log(Batman.year);
 
 // class Student {
 //     constructor(student, age, course, teachers, grades) {
