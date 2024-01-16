@@ -2,11 +2,38 @@ const express = require('express')
 const app =  express();
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
+
+const jwtSecret = "fjkabhjfbewuboqwnopwmeqdnqnooenwuopasd"
 
 app.use(cors());
-
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+
+function auth(req, res, next){
+
+    const authToken = req.headers['authorization']
+
+    if(authToken != undefined){
+
+        const bearer = authToken.split(' ')
+        var token = bearer[1];
+
+        jwt.verify(token, jwtSecret, (error, data) => {
+            if (error) {
+                res.status(401).json({ error: 'invalid token' });
+            } else {
+                req.token = token;
+                req.loggedUser = {id: data.id, email: data.email};  
+                req.company = "Udemy"
+                console.log(data);
+                next();
+            }
+        });
+    } else {
+        res.status(401).json({ error: 'invalid token' });
+    }
+}
 
 var DB = {
     games: [
@@ -28,14 +55,28 @@ var DB = {
             year: 2015,
             price: 45
         },
+    ], 
+    users: [
+        {
+            id: 1,
+            name: 'Thiago Martins',
+            email: 'thiago@email.com',
+            password: '1234'
+         }, 
+         {
+            id: 10,
+            name: 'Isadora',
+            email: 'isadora@email.com',
+            password: 'java123'
+         },
     ]
 
 }
 
 
-app.get('/games', (req, res) => {
-    res.statusCode = 200; 
-    res.json(DB.games)
+app.get('/games', auth,  (req, res) => {
+    req.statusCode = 200 
+    res.json({company: req.company, user: req.loggedUser, games: DB.games})
 })
 
 app.get('/game/:id', (req, res) => {
@@ -117,6 +158,46 @@ app.put('/game/:id', (req, res) => {
             res.sendStatus(404)
         }
     }
+})
+
+app.post('/auth', (req, res) => {
+
+    var {email, password} = req.body
+
+    if(email != undefined){
+
+         var user = DB.users.find(u => u.email == email)
+
+         if(user != undefined){
+
+            if(user.password == password){
+
+                jwt.sign({id: user.id, email: user.email}, jwtSecret, {expiresIn: "48h"}, (error, token) => {
+                    if(error){
+                        res.status(400)
+                        res.json({eror: 'internal failure'})
+                    }else{
+
+                        res.status(200);
+                        res.json({token: token })
+
+                    }
+                })
+            }else{
+                res.status(401)
+                res.json({error: "invalid credencials"})
+            }
+
+         }else{
+            res.status(404)
+            res.json({error: "email sent does not exist in the database"})
+         }
+
+    }else{
+        res.status(400)
+        res.json({error: 'Email is invalid'})
+    }
+
 })
 
 app.listen(8080, () => {
