@@ -76,7 +76,7 @@ var DB = {
 
 app.get('/games', auth,  (req, res) => {
     req.statusCode = 200 
-    res.json({company: req.company, user: req.loggedUser, games: DB.games})
+    res.json({games: DB.games})
 })
 
 app.get('/game/:id', (req, res) => {

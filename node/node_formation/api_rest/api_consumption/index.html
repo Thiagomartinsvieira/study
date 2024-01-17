@@ -8,6 +8,12 @@
 </head>
 
 <body>
+
+    <h2>Login screen</h2>
+    <input type="text" name="email" id="email" placeholder="E-mail"><br>
+    <input type="password" name="password" id="password" placeholder="password">
+    <button onclick="login()">Login</button>
+
     <hr>
     <h3>Games List</h3>
     <ul id="games"></ul>
@@ -27,6 +33,34 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script>
+        function login() {
+            var emailField = document.getElementById('email')
+            var passwordField = document.getElementById('password')
+
+            var emailField = emailField.value
+            var passwordField = passwordField.value
+
+            axios.post("http://localhost:8080/auth", {
+                email,
+                password
+            }).then(res => {
+                var token = res.data.token
+                localStorage.setItem("token", token)
+                alert('Logged!!')
+            }).catch(err => {
+                alert('Invalid login...')
+            })
+
+        }
+
+        var axiosConfig = {
+            headers: {
+                Authorization: "Bearer " +
+                    localStorage.getItem("token")
+            }
+        }
+
+
         function createGame() {
             var titleInput = document.getElementById('title');
             var yearInput = document.getElementById('year');
@@ -49,7 +83,7 @@
 
         function deleteGame(listItem) {
             var id = listItem.getAttribute('data-id');
-            axios.delete(`http://localhost:8080/game/${id}`).then(response => {
+            axios.delete(`http://localhost:8080/game/${id}`, axiosConfig).then(response => {
                 alert('Game deleting');
             }).catch(error => {
                 console.log(error);
@@ -62,7 +96,7 @@
             var year = listItem.getAttribute('data-year');
             var price = listItem.getAttribute('data-price');
             document.getElementById('idEdit').value = id;
-            document.getElementById('titleEdit').value = title; // Corrected variable name
+            document.getElementById('titleEdit').value = title;
             document.getElementById('yearEdit').value = year;
             document.getElementById('priceEdit').value = price;
         }
@@ -81,7 +115,7 @@
 
             var id = idInput.value;
 
-            axios.put(`http://localhost:8080/game/${id}`, game).then(response => { // Corrected URL
+            axios.put(`http://localhost:8080/game/${id}`, game, axiosConfig).then(response => { // Corrected URL
                 if (response.status == 200) {
                     alert('Updated game!');
                 }
@@ -90,7 +124,7 @@
             });
         }
 
-        axios.get('http://localhost:8080/games').then(response => {
+        axios.get('http://localhost:8080/games', axiosConfig).then(response => {
             var games = response.data;
             var list = document.getElementById('games');
 
