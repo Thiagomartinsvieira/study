@@ -99,19 +99,32 @@ app.get('/game/:id', (req, res) => {
 
 // Register one game
 app.post("/game", (req, res) => {
-    let {title, price, year} = req.body
-    DB.games.push({
-        id: 2323,
-        title,
-        price,
-        year
-    });
 
-    res.sendStatus(200)
+    var HATEOAS = [
+        {
+            href: "http://localhost:45679/game/0",
+            method: 'DELETE',
+            rel: 'Delete_game'
+        },
+        {
+            href: 'http://localhost:45679/game/0',
+            method: 'GET',
+            rel: 'get_game'
+        },
+        {
+            href: 'http://localhost:45679/auth',
+            method: 'POST',
+            rel: 'login'
+        },
+    ]
+
+  res.statusCode = 200
+  res.json({games: DB.games, _links: HATEOAS})
 
 })
 
 app.delete("/game/:id", (req, res) => {
+
     if(isNaN(req.params.id)){
         res.sendStatus(400)
     } else{    
@@ -134,6 +147,29 @@ app.put('/game/:id', (req, res) => {
         
         let id = parseInt(req.params.id)
 
+        var HATEOAS = [
+            {
+                href: "http://localhost:45679/game/"+id,
+                method: 'DELETE',
+                rel: 'Delete_game'
+            },
+            {
+                href: "http://localhost:45679/game/"+id,
+                method: 'PUT',
+                rel: 'edit_game'
+            },
+            {
+                href: 'http://localhost:45679/game/'+id,
+                method: 'GET',
+                rel: 'get_game'
+            },
+            {
+                href: 'http://localhost:45679/games',
+                method: 'GET',
+                rel: 'get_all_games'
+            },
+        ]
+
         let game = DB.games.find(g => g.id == id)
 
         if(game != undefined){
@@ -153,6 +189,7 @@ app.put('/game/:id', (req, res) => {
             }
 
             res.sendStatus(200)
+            res.json({game, _link:HATEOAS})
 
         }else {
             res.sendStatus(404)
