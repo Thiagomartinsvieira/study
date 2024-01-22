@@ -116,15 +116,33 @@ var database = require('./database')
 //     console.log(error)
 // })
 
-database.select([
-    "studios.name as studio_name",
-    "games.name as game_name",
-    "games.price"
-]).table('games_studios')
-.innerJoin('games', 'games.id', '=', 'games_studios.game_id') 
-.innerJoin('studios', 'studios.id', '=', 'games_studios.studio_id') 
-.where('games.id', 4).then(data => {
-    console.log(data);
-}).catch(error => {
-    console.log(error);
-});
+// database.select([
+//     "studios.name as studio_name",
+//     "games.name as game_name",
+//     "games.price"
+// ]).table('games_studios')
+// .innerJoin('games', 'games.id', '=', 'games_studios.game_id') 
+// .innerJoin('studios', 'studios.id', '=', 'games_studios.studio_id') 
+// .where('games.id', 4).then(data => {
+//     console.log(data);
+// }).catch(error => {
+//     console.log(error);
+// });
+
+async function transactionTest(){
+
+
+    try {
+        await database.transaction(async trans => {
+          await database.insert({name: 'EA'}).table('studios')
+          await database.insert({name: 'Mojang'}).table('studios')
+          await database.insert({name: 'Ubisoft'}).table('studios')
+          await database.insert({name: 'Epic'}).table('studios')
+        })
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+transactionTest()
