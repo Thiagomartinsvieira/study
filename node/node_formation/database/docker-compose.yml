@@ -17,3 +17,4 @@ services:
       MYSQL_DATABASE: knexjs
       MYSQL_USER: node_user
       MYSQL_PASSWORD: 1234
+
