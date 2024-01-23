@@ -1,5 +1,8 @@
 <template>
     <div id="client">
+        <input type="text" v-model="name">
+        <hr>
+        <input type="text" v-model="description">
         <h2>Client {{name}} component here !</h2>
         <p>Client description: {{description}}</p>
     </div>
