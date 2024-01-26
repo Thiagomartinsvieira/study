@@ -1,32 +1,29 @@
 <template>
     <div id="client">
-        <input type="text" v-model="name">
+        <h4>Name: {{ name }}</h4>
         <hr>
-        <input type="text" v-model="description">
-        <h2>Client {{name}} component here !</h2>
-        <p>Client description: {{description}}</p>
+        <p>Email: {{ email }}</p>
+        <p>Age: {{ age }}</p>
     </div>
 </template>
 
-
 <script>
 export default {
-    data(){
-        return {
-             name: 'Thiago',
-             number: '',
-             email: '',
-             age: 0,
-             description: 'Lorem ipsum lorem Ipsum 1212'
-        }
+    props: {
+        name: String,
+        email: String,
+        age: Number,
+        client: Object
     }
 }
 </script>
-<style scoped>
-    #client{
-        max-width: 700px;
-        height: 100px;
-    }
 
-    
+<style scoped>
+#client {
+    background-color: #ece5e3;
+    max-width: 700px;
+    height: 200px;
+    padding: 1%;
+    margin-top: 4%;
+}
 </style>
