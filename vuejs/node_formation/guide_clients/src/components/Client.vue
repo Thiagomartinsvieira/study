@@ -1,21 +1,15 @@
 <template>
     <div id="client">
-        <h4>Name: {{ name }}</h4>
+        <h4>Name: {{ client.name }}</h4>
         <hr>
-        <p>Email: {{ email }}</p>
-        <p>Age: {{ age }}</p>
+        <p>Email: {{ client.email }}</p>
+        <p v-if="showAge === false">Age: {{ client.age }}</p>
+        <p v-else>The user hide age</p>
     </div>
 </template>
 
-<script>
-export default {
-    props: {
-        name: String,
-        email: String,
-        age: Number,
-        client: Object
-    }
-}
+<script setup>
+const {props} = defineProps(['client', 'showAge'])
 </script>
 
 <style scoped>

@@ -2,10 +2,10 @@
   <div>
     <input type="text" v-model="thiagoClient.name">
     <input type="text" v-model="thiagoClient.email">
-    <Client :name="thiagoClient.name" :email="thiagoClient.email" :age="thiagoClient.age" />
-    <Client :name="thiagoClient.name" :email="thiagoClient.email" :age="thiagoClient.age" />
-    <Client :name="thiagoClient.name" :email="thiagoClient.email" :age="thiagoClient.age" />
-    <Client :name="thiagoClient.name" :email="thiagoClient.email" :age="thiagoClient.age" />
+    <Client :client="thiagoClient" :showAge="true" />
+    <Client :client="thiagoClient" :showAge="true"/>
+    <Client :client="thiagoClient" :showAge="false"/>
+    <Client :client="thiagoClient" :showAge="false"/>
   </div>
 </template>
 
