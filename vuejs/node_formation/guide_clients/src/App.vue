@@ -1,25 +1,25 @@
 <template>
   <div>
-    <h2>Register: </h2>
+    <h2>Register:</h2>
     <small id="nameError" v-show="thereIsAnError">The name is invalid, try again</small><br>
     <input type="text" placeholder="name" v-model="nameField"> <br>
     <input type="email" placeholder="email" v-model="emailField"><br>
     <input type="number" placeholder="age" v-model="ageField"><br>
     <button @click="registerUser">Register</button>
     <hr>
-    <Client v-for="(client, index) in clients" :key="client.id" :client="client" @onMeDelete="deleteUser(client.id)" />
+    <Client v-for="(client, index) in orderedClients" :key="client.id" :client="client" @onMeDelete="deleteUser(client.id)" />
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import Client from './components/Client.vue';
+import _ from 'lodash'
 
 const nameField = ref('');
 const emailField = ref('');
 const ageField = ref(0);
 const thereIsAnError = ref(false);
-
 const clients = ref([
   {
     id: 1,
@@ -56,6 +56,10 @@ const registerUser = () => {
 const deleteUser = (clientId) => {
   console.log('Received event from child component with ID:', clientId);
 };
+
+const orderedClients = computed(() => {
+  return _.orderBy(clients.value, ['name'], ['asc']);
+});
 </script>
 
 <style scoped>
