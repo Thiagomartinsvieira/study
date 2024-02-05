@@ -4,15 +4,14 @@
         <input type="email" name="email" id="email" placeholder="email">
         <button>Test</button>
         <h3>{{routerParam}}</h3>
+        <RouterView /> 
     </div>
 </template>
 
 <script>
 export default {
     created() {
-        console.log('Thiago Martins')
-        console.log(this.$route.params.data)
-        this.routerParam = this.$route.params.data
+        // this.routerParam = this.$route.params.data
     },
     data(){
         return {

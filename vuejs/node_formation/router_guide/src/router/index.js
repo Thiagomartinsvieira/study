@@ -17,9 +17,16 @@ const router = createRouter({
      component: AboutView
     },
     {
-      path: '/thiago/:data',
+      path: '/thiago/',
       name: 'Thiago',
-      component: Register
+      component: Register,
+      children: [
+        {
+          path: 'martins',
+          name: 'Martins',
+          component: AboutView
+        }
+      ]
     }
   ]
 })
