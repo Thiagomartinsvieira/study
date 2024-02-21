@@ -61,6 +61,12 @@ export default {
   },
   methods: {
     update() {
+
+      var req = {
+      headers: {
+        Authorization: 'Bearer ' + localStorage.getItem('token')
+      }
+    }
       
       this.error = null;
 
@@ -69,14 +75,15 @@ export default {
         return;
       }
 
-      axios.post('http://localhost:8686/user', {
+      axios.put('http://localhost:8686/user', {
         name: this.name,
         email: this.email,
-      })
+        id: this.id
+      }, req)
       .then(res => {
         console.log(res);
        
-        this.$router.push({ name: 'home' });
+        this.$router.push({ name: 'Users' });
       })
       .catch(error => {
         if (error.response && error.response.data && error.response.data.error) {

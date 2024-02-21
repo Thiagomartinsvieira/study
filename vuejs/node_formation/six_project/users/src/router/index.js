@@ -56,7 +56,7 @@ const router = createRouter({
     },
     {
       path: '/admin/users/edit/:id',
-      name: 'UsersEdit',
+      name: 'UserEdit',
       component: Edit,
       beforeEnter: AdminAuth
     },
