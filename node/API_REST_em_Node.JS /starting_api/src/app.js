@@ -8,8 +8,6 @@ const knexfile = require('../knexfile')
 // TODO create dynamic switching
 app.db = knex(knexfile.test)
 
-// app.use(knexLogger(app.db))
-
 consign({cwd: "src", verbose: false})
 .include("./config/middlewares.js")
 .then('./services')
@@ -20,6 +18,13 @@ consign({cwd: "src", verbose: false})
 app.get("/", (req, res) => {
     console.log("Server is running")
     res.status(200).send()
+})
+
+app.use((error, req, res, next) => {
+    const {name, message, stack} = error
+    if (name === "ValidationError") res.status(400).json({error: message})
+    else res.status(500).json({name, message, stack})
+    next(error)
 })
 
 // app.db.on('query', (query) => {
