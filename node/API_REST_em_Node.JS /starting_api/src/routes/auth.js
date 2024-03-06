@@ -1,0 +1,25 @@
+const jwt = require("jwt-simple")
+const bcrypt = require("bcrypt-nodejs")
+const ValidationError = require("../errs/ValidationError")
+
+const secret  = "mnksmnaklndwi"
+
+module.exports = (app) => {
+    const signIn = (req, res, next) => {
+        app.services.user.findOne({mail: req.body.mail})
+        .then((user) => {
+            if(!user) throw new ValidationError("user or password wrong")
+            if(bcrypt.compareSync(req.body.password, user.password)){
+                const payload = {
+                    id: user.id,
+                    name: user.name,
+                    mail: user.mail,
+                }
+                const token = jwt.encode(payload, secret)
+                res.status(200).json({token})
+            } else throw new ValidationError("user or password wrong")
+        }).catch(error => next(error))
+    }
+
+    return {signIn}
+}
