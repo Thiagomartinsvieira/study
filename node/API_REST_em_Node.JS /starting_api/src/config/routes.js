@@ -18,5 +18,4 @@ module.exports = (app) => {
     .get(app.routes.accounts.getAll)
     .put(app.routes.accounts.update)
     .delete(app.routes.accounts.remove)
-    
 }

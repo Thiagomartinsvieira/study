@@ -13,7 +13,7 @@ consign({cwd: "src", verbose: false})
 .include("./config/middlewares.js")
 .then('./services')
 .then("./routes")
-.then('./config/routes.js')
+.then('./config/router.js')
 .into(app)
 
 app.get("/", (req, res) => {
@@ -24,6 +24,7 @@ app.get("/", (req, res) => {
 app.use((error, req, res, next) => {
     const {name, message, stack} = error
     if (name === "ValidationError") res.status(400).json({error: message})
+    if (name === "incorrectResourceError") res.status(403).json({error: message})
     else res.status(500).json({name, message, stack})
     next(error)
 })
