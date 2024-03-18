@@ -17,5 +17,18 @@ module.exports = {
             directory: 'src/seeds',
         },
     },
+    prod: {
+        client: "pg",
+        version: '8.11.3',
+        connection: {
+            host: "localhost",
+            user: "postgres",
+            password: "123456",
+            databse: "seubarriga",
+        } ,
+        migrations: {
+            directory: 'src/migrations',
+        },
+    },
 }
 
