@@ -2,7 +2,7 @@ package exercises;
 
 import java.util.Scanner;
 
-public class madatoryVote {
+public class MadatoryVote {
     public static void main(String[] args) {
 
         try (Scanner scanner = new Scanner(System.in)) {
