@@ -19,7 +19,7 @@ public class RepeatExercise {
                 totalNumbers++;
 
                 if(n % 2 == 0) evenCount++;
-                else oddCount++;5
+                else oddCount++;
 
                 if(n > 100) above100Count++;
             }
