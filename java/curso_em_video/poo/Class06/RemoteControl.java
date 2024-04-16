@@ -93,7 +93,7 @@ public class RemoteControl implements Controller {
     public void offMute() {
         if(this.getOn() && this.getVolume() == 0){
             this.setVolume(50);
-        }
+        } 
     }
 
     @Override
