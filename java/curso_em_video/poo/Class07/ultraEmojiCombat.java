@@ -11,7 +11,11 @@ public class ultraEmojiCombat {
         f[4] = new Figther("UFOCatcher", "Japan", 25, 1.78f, 88.7f, 13, 1, 0);
         f[5] = new Figther("Overhand", "Mexico", 32, 1.85f, 92.2f, 12, 3, 1);
 
-        f[3].setDraws(10);
-        f[3].status();
+        Fight UEC01 = new Fight();
+        UEC01.scheduleFight(f[0], f[1]);
+        UEC01.fight();
+        f[0].status();
+        f[1].status();
+
     }
 }
