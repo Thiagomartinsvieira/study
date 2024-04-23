@@ -1,4 +1,4 @@
-package Fundamentals;
+package Fundamentals.Operators;
 
 public class ArithmeticChanllenge {
     public static void main(String[] args) {
