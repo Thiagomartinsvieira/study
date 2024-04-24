@@ -6,7 +6,7 @@ public class ContinueLabeled {
             for (int j = 0; j < 3; j++) {
 
                 if(i == 1) {
-                    continue external;
+                    continue  ;
                 }
                 System.out.printf("[%d %d]", i, j);
             }
