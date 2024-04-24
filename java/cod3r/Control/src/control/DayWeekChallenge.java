@@ -18,19 +18,19 @@ public class DayWeekChallenge {
 
         String dayOFWeek = scanner.next();
 
-        if(Objects.equals(dayOFWeek, "Sunday")){
+        if(dayOFWeek.equalsIgnoreCase("Sunday")){
             System.out.println(1);
-        } else if (dayOFWeek.equals("Monday")) {
+        } else if (dayOFWeek.equalsIgnoreCase("Monday")) {
             System.out.println(2);
-        } else if (dayOFWeek.equals("Tuesday")) {
+        } else if (dayOFWeek.equalsIgnoreCase("Tuesday")) {
             System.out.println(3);
-        } else if (dayOFWeek.equals("Wednesday")) {
+        } else if (dayOFWeek.equalsIgnoreCase("Wednesday")) {
             System.out.println(4);
-        } else if (dayOFWeek.equals("Thursday")) {
+        } else if (dayOFWeek.equalsIgnoreCase("Thursday")) {
             System.out.println(5);
-        } else if (dayOFWeek.equals("Friday")) {
+        } else if (dayOFWeek.equalsIgnoreCase("Friday")) {
             System.out.println(6);
-        } else if (dayOFWeek.equals("Saturday")) {
+        } else if (dayOFWeek.equalsIgnoreCase("Saturday")) {
             System.out.println(7);
         } else {
             System.out.println("Invalid day");
