@@ -6,6 +6,9 @@ public class DateTest {
         Date today = new Date(23, 10, 2024);
 
         Date d1 = new Date();
+        d1.printFormattedDate();
+
+        System.out.println();
 
         var christmas = new Date();
         christmas.day = 25;
@@ -16,9 +19,6 @@ public class DateTest {
         System.out.println(christmas.getDateFormatted());
 
         today.printFormattedDate();
-
-        System.out.println();
-
         d1.printFormattedDate();
     }
 }
