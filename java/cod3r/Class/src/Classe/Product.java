@@ -4,7 +4,16 @@ public class Product {
 
     String name;
     double price;
-    double discount;
+    static double discount = 0.25; // Default discount
+
+    Product(){
+
+    }
+
+    Product(String initialName, double initialPrice){
+        name = initialName;
+        price = initialPrice;
+    }
 
     double priceWithDiscount(){
         return price * (1 - discount);
