@@ -3,16 +3,29 @@ package oo.herance;
 public class Game {
     public static void main(String[] args) {
 
-        Player p1 = new Player();
-        p1.x = 10;
-        p1.y = 10;
+        Monster monster = new Monster();
+        monster.x = 10;
+        monster.y = 10;
 
-        p1.toWalk(Direction.NORTH);
-        p1.toWalk(Direction.EAST);
-        p1.toWalk(Direction.NORTH);
-        p1.toWalk(Direction.WEST);
+        Hero hero = new Hero(10, 11);
 
-        System.out.println(p1.x);
-        System.out.println(p1.y);
+
+        System.out.println("Monster has => " + monster.life);
+        System.out.println("Hero has => " + hero.life);
+
+        monster.attack(hero);
+        hero.attack(monster);
+
+        monster.attack(hero);
+        hero.attack(monster);
+
+        monster.toWalk(Direction.NORTH);
+        monster.attack(hero);
+        hero.attack(monster);
+
+        System.out.println("Monster has => " + monster.life);
+        System.out.println("Hero has => " + hero.life);
+
+
     }
 }
