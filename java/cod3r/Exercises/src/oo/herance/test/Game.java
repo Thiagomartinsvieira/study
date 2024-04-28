@@ -1,4 +1,8 @@
-package oo.herance;
+package oo.herance.test;
+
+import oo.herance.Direction;
+import oo.herance.Hero;
+import oo.herance.Monster;
 
 public class Game {
     public static void main(String[] args) {
@@ -10,8 +14,8 @@ public class Game {
         Hero hero = new Hero(10, 11);
 
 
-        System.out.println("Monster has => " + monster.life);
-        System.out.println("Hero has => " + hero.life);
+        System.out.println("Monster has => " + monster.getLife());
+        System.out.println("Hero has => " + hero.getLife());
 
         monster.attack(hero);
         hero.attack(monster);
@@ -23,8 +27,8 @@ public class Game {
         monster.attack(hero);
         hero.attack(monster);
 
-        System.out.println("Monster has => " + monster.life);
-        System.out.println("Hero has => " + hero.life);
+        System.out.println("Monster has => " + monster.getLife());
+        System.out.println("Hero has => " + hero.getLife());
 
 
     }

@@ -1,16 +1,16 @@
 package oo.herance;
 
 public class Player {
-    int life = 100;
-    int x;
-    int y;
+    public int life = 100;
+    public int x;
+    public int y;
 
     Player(int x , int y){
         this.x = x;
         this.y = y;
     }
 
-    boolean attack(Player oponent){
+    public boolean attack(Player oponent){
 
         int deltX = Math.abs(x - oponent.x);
         int deltY = Math.abs(y - oponent.y);
@@ -26,7 +26,7 @@ public class Player {
         }
     }
     
-    boolean toWalk(Direction direction){
+    public boolean toWalk(Direction direction){
         switch (direction){
             case NORTH:
                 y--;
@@ -43,5 +43,9 @@ public class Player {
         }
 
         return true;
+    }
+
+    public int getLife(){
+        return life;
     }
 }

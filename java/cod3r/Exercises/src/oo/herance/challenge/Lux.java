@@ -1,6 +1,10 @@
 package oo.herance.challenge;
 
-public class Porche {
-    void onAir();
-    void OffAir();
+public interface Lux {
+    public void onAir();
+    abstract void offAir();
+
+    default int airSpeed(){
+        return 1;
+    }
 }

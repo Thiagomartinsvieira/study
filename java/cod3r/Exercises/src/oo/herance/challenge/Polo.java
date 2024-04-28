@@ -2,20 +2,22 @@ package oo.herance.challenge;
 
 public class Polo extends Car {
 
-    Polo(){
+    public Polo(){
         super(170);
     }
 
     @Override
-    void speedUp() {
+    public void speedUp() {
         super.speedUp();
+        int speed = 0;
         if (speed < MAXIMUM_SPEED){
             speed += 7;
         }
     }
 
     @Override
-    void toBrake() {
+    public void toBrake() {
+        int speed = 0;
         if (speed > 0){
             speed -= 6;
         }

@@ -1,4 +1,8 @@
-package oo.herance.challenge;
+package oo.herance.test;
+
+import oo.herance.challenge.Car;
+import oo.herance.challenge.Ferrari;
+import oo.herance.challenge.Polo;
 
 public class CarTest {
     public static void main(String[] args) {
@@ -15,11 +19,15 @@ public class CarTest {
         car1.toBrake();
 
         ferrari.speedUp();
+        ferrari.onTurbo();
+        ferrari.speedUp();
         ferrari.speedUp();
         ferrari.toBrake();
 
-        System.out.println("The car speed is: " + car1.speed + "Km");
-        System.out.println("The Polo speed is: " + polo1.speed + "Km");
-        System.out.println("The Ferrari speed is: " + ferrari.speed + "Km");
+        System.out.println(ferrari.airSpeed());
+
+        System.out.println("The car speed is: " + car1.getSpeed() + "Km");
+        System.out.println("The Polo speed is: " + polo1.getSpeed() + "Km");
+        System.out.println("The Ferrari speed is: " + ferrari.getSpeed() + "Km");
     }
 }
