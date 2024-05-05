@@ -1,5 +1,7 @@
 package br.com.cod3r.mf.model;
 
+import br.com.cod3r.mf.exception.ExplosionException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -22,11 +24,16 @@ public class Board {
     }
 
     public void open(int row, int colum){
-        fields.parallelStream()
-                .filter(r -> r.getRow() == row)
-                .filter(c -> c.getColumn() == colum)
-                .findFirst()
-                .ifPresent(f -> f.open());
+        try {
+            fields.parallelStream()
+                    .filter(r -> r.getRow() == row)
+                    .filter(c -> c.getColumn() == colum)
+                    .findFirst()
+                    .ifPresent(f -> f.open());
+        } catch (ExplosionException e){
+            fields.forEach(f -> f.setOpen(true));
+            throw e;
+        }
     }
 
     public void toggleTag(int row, int colum){
@@ -58,9 +65,9 @@ public class Board {
         Predicate<Field> mined = f -> f.isUndermined();
 
         do {
-            armedMines = fields.stream().filter(mined).count();
             int random = (int) (Math.random() * fields.size());
             fields.get(random).undermine();
+            armedMines = fields.stream().filter(mined).count();
         } while (armedMines < mines);
     }
 
@@ -76,8 +83,20 @@ public class Board {
     public String toString() {
         StringBuilder sb = new StringBuilder();
 
+        sb.append("   ");
+        for (int c = 0; c < columns; c++) {
+            sb.append(" ");
+            sb.append(c);
+            sb.append(" ");
+        }
+
+        sb.append("\n");
+
         int i = 0;
         for (int r = 0; r < rows; r++) {
+            sb.append(" ");
+            sb.append(r);
+            sb.append(" ");
 
             for (int c = 0; c < columns; c++) {
                 sb.append(" ");
