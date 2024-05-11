@@ -1,5 +1,7 @@
 package br.com.cod3r.calc.vision;
 
+import br.com.cod3r.calc.model.Memory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -64,6 +66,9 @@ public class Keyboard extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        if (e.getSource() instanceof JButton) {
+            JButton button = (JButton) e.getSource();
+           Memory.getInstance().processCommand(button.getText());
+        }
     }
 }
