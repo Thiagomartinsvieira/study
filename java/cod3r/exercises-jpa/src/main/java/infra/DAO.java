@@ -6,16 +6,17 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class DAO<E>  {
+public class DAO<E> {
 
     private static EntityManagerFactory emf;
     private EntityManager em;
-    private Class<E> eClass;
-    static {
-        try  {
-            emf = Persistence.createEntityManagerFactory("Exercises-jpa");
-        } catch (Exception e){
+    private Class<E> clazz;
 
+    static {
+        try {
+            emf = Persistence.createEntityManagerFactory("Exercises-jpa");
+        } catch (Exception e) {
+            // log -> log4j
         }
     }
 
@@ -23,8 +24,8 @@ public class DAO<E>  {
         this(null);
     }
 
-    public DAO(Class<E> eClass){
-        this.eClass = eClass;
+    public DAO(Class<E> clazz) {
+        this.clazz = clazz;
         em = emf.createEntityManager();
     }
 
@@ -47,24 +48,39 @@ public class DAO<E>  {
         return this.openT().include(entity).closeT();
     }
 
-    public E getPerId(Object id){
-        return em.find(eClass, id);
+    public E getById(Object id) {
+        return em.find(clazz, id);
     }
 
     public List<E> getAll() {
         return this.getAll(10, 0);
     }
 
-    public List<E> getAll(int amount, int displacement ) {
-        if (eClass == null){
-            throw new UnsupportedOperationException("class null");
+    public List<E> getAll(int quantity, int offset) {
+        if(clazz == null) {
+            throw new UnsupportedOperationException("Null class.");
         }
 
-        String jpql = "select e from " + eClass.getSimpleName() + " e";
-        TypedQuery<E> query = em.createQuery(jpql, eClass);
-        query.setMaxResults(amount);
-        query.setFirstResult(displacement);
+        String jpql = "select e from " + clazz.getName() + " e";
+        TypedQuery<E> query = em.createQuery(jpql, clazz);
+        query.setMaxResults(quantity);
+        query.setFirstResult(offset);
         return query.getResultList();
+    }
+
+    public List<E> consult(String queryName, Object... params) {
+        TypedQuery<E> query = em.createNamedQuery(queryName, clazz);
+
+        for (int i = 0; i < params.length; i += 2) {
+            query.setParameter(params[i].toString(), params[i + 1]);
+        }
+
+        return query.getResultList();
+    }
+
+    public E consultOne(String queryName, Object... params) {
+        List<E> list = consult(queryName, params);
+        return list.isEmpty() ? null : list.get(0);
     }
 
     public void close() {

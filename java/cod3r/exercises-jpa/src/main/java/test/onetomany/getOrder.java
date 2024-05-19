@@ -9,13 +9,13 @@ public class getOrder {
 
         DAO< Order> dao = new DAO<>(Order.class);
 
-        Order order = dao.getPerId(1L);
+        Order order = dao.getById(1L);
 
         for (ItemOrder item: order.getItens()) {
             System.out.println(item.getAmout());
             System.out.println(item.getProduct().getName());
         }
-        
+
         dao.close();
     }
 }

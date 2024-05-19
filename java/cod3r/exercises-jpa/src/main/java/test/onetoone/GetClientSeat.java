@@ -9,13 +9,13 @@ public class GetClientSeat {
 
         DAO< Client> daoClient = new DAO<>(Client.class);
 
-        Client client = daoClient.getPerId(1L);
+        Client client = daoClient.getById(1L);
         System.out.println(client.getSeat().getName());
 
         daoClient.close();
 
         DAO<Seat> daoSeat = new DAO<>(Seat.class);
-        Seat seat = daoSeat.getPerId(4L);
+        Seat seat = daoSeat.getById(4L);
 
         System.out.println(seat.getClient().getSeat().getName());
 
