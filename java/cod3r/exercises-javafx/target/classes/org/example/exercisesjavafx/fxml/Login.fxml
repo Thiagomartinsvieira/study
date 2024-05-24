@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.geometry.Insets?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="org.example.exercisesjavafx.fxml.LoginController"
+          prefHeight="400.0" prefWidth="600.0"
+          styleClass="login" hgap="15" vgap="15">
+
+    <padding>
+        <Insets left="40" right="40" top="40" />
+    </padding>
+
+    <columnConstraints>
+        <ColumnConstraints minWidth="60" prefWidth="60" halignment="RIGHT" />
+        <ColumnConstraints prefWidth="200" minWidth="Infinity" hgrow="ALWAYS" />
+    </columnConstraints>
+
+    <Label text="Welcome"
+           styleClass="login-title"
+           GridPane.columnIndex="0" GridPane.rowIndex="0"
+           GridPane.columnSpan="2" GridPane.halignment="CENTER"
+    />
+
+           <GridPane.margin>
+               <Insets left="40" right="40" top="40" bottom="40" />
+           </GridPane.margin>
+    />
+    <Label text="E-mail: "
+           styleClass="login-form-label"
+           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="1"
+               fx:id="emailField"/>
+    <Label text="Password: "
+           styleClass="login-form-label" GridPane.columnIndex="0"
+           GridPane.rowIndex="2"/>
+
+    <PasswordField GridPane.rowIndex="2" GridPane.columnIndex="1"
+                   fx:id="passwordField" />
+
+    <Button text="Login"
+            styleClass="login-form-button" GridPane.columnIndex="0"
+            GridPane.columnSpan="2" GridPane.halignment="CENTER"
+            GridPane.rowIndex="3" onAction="#login" >
+
+        <GridPane.margin>
+            <Insets top="20" bottom="20" />
+        </GridPane.margin>
+
+    </Button>
+
+</GridPane>
