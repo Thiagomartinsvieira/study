@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="59f633f7-9237-4320-a729-5222efae4ace" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/fxml/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/fxml/Login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/fxml/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestTilePane.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/exercisesjavafx/fxml/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/exercisesjavafx/fxml/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/basic/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/basic/Counter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/basic/Wizard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/basic/Wizard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/AppLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/AppLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/Box.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/Box.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestAnchorPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestAnchorPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestBorderPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestBorderPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestFlowPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestFlowPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestGridPAne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestGridPAne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestStackPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/layout/TestStackPane.java" afterDir="false" />
-    </list>
+    <list default="true" id="59f633f7-9237-4320-a729-5222efae4ace" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="module-info" />
         <option value="Class" />
       </list>
     </option>
@@ -117,6 +98,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AppFXML" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="/nix/store/3km8jyd9q51nnfri17qqclwkl3jmjv41-openjdk-21+35" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="org.example.exercisesjavafx.fxml.AppFXML" />
+      <module name="exercises-javafx" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.exercisesjavafx.fxml.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AppLayout" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="/nix/store/3km8jyd9q51nnfri17qqclwkl3jmjv41-openjdk-21+35" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -155,21 +151,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.exercisesjavafx.basic.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="org.example.exercisesjavafx.fxml.AppFXML" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="/nix/store/3km8jyd9q51nnfri17qqclwkl3jmjv41-openjdk-21+35" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="org.example.exercisesjavafx.fxml.AppFXML" />
-      <module name="exercises-javafx" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.exercisesjavafx.fxml.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
