@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59f633f7-9237-4320-a729-5222efae4ace" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/fxml/AppFXML.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/fxml/AppFXML.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/HelloController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/basic/Counter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/basic/FirstFx.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/basic/Wizard.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/basic/counter.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/fxml/AppFXML.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/fxml/Login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/fxml/Login.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/fxml/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/exercisesjavafx/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,33 +42,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AppFXML.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppLayout.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Counter.executor&quot;: &quot;Run&quot;,
-    &quot;Application.FirstFx.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Wizard.executor&quot;: &quot;Run&quot;,
-    &quot;Application.org.example.exercisesjavafx.fxml.AppFXML.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path&quot;: &quot;/home/thiago/Documents/Estudos/study/java/cod3r/exercises-javafx/libs&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/thiago/Documents/Estudos/study/java/cod3r/exercises-javafx/src/main/java/org/example/exercisesjavafx/fxml&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15234375&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AppFXML.executor": "Run",
+    "Application.AppLayout.executor": "Run",
+    "Application.Counter.executor": "Run",
+    "Application.FirstFx.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Wizard.executor": "Run",
+    "Application.org.example.exercisesjavafx.fxml.AppFXML.executor": "Run",
+    "Downloaded.Files.Path": "/home/thiago/Documents/Estudos/study/java/cod3r/exercises-javafx/libs",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/thiago/Documents/Estudos/study/java/cod3r/exercises-sb",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15234375",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "build.tools"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/org/example/exercisesjavafx/fxml" />
