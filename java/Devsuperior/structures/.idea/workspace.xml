@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8e773d02-15a3-4078-9d45-3644396c8ac7" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2hO3K0WiPFhuKdGmZldKdCxD9yh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ClothingParts.executor": "Run",
+    "Application.DataInput.executor": "Run",
+    "Application.DataOutput.executor": "Run",
+    "Application.Dividers.executor": "Run",
+    "Application.EvenOrOdd.executor": "Run",
+    "Application.ForExample.executor": "Run",
+    "Application.ForExercise.executor": "Run",
+    "Application.FuelStation.executor": "Run",
+    "Application.IfElse.executor": "Run",
+    "Application.Income.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.MainProgram.executor": "Run",
+    "Application.Password.executor": "Run",
+    "Application.Stall.executor": "Run",
+    "Application.TemperatureConverter.executor": "Run",
+    "Application.WhileExample.executor": "Run",
+    "Application.dataInput.executor": "Run",
+    "Application.difference.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/thiago/Documents/Estudos/study/java/Devsuperior/basic",
+    "onboarding.tips.debug.path": "/home/thiago/Documents/Estudos/Projects/structures/Main.java"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-f00315f9" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e773d02-15a3-4078-9d45-3644396c8ac7" name="Changes" comment="" />
+      <created>1717451230668</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717451230668</updated>
+    </task>
+    <servers />
+  </component>
+</project>
