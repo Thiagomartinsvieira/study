@@ -15,10 +15,11 @@ public class CalendarExample {
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(d);
-        cal.add(Calendar.HOUR_OF_DAY, 4);
-        d = cal.getTime();
+        int minutes = cal.get(Calendar.MINUTE);
+        int month = 1 + cal.get(Calendar.MONTH);
 
-        System.out.println(sdf.format(d));
+        System.out.println("Minutes: " + minutes);
+        System.out.println("Month: " + month);
 
     }
 }
