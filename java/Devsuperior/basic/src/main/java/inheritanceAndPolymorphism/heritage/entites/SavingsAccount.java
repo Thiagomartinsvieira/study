@@ -1,4 +1,4 @@
-package inheritanceAndPolymorphism.entites;
+package inheritanceAndPolymorphism.heritage.entites;
 
 public class SavingsAccount extends Account {
     private Double interestRate;
@@ -24,4 +24,10 @@ public class SavingsAccount extends Account {
     public void updatedBalance(){
         balance += balance * interestRate;
     }
+
+    @Override
+    public final void withdraw(double amount){
+        balance -= amount;
+    }
+
 }
