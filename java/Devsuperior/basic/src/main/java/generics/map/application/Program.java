@@ -2,25 +2,28 @@ package generics.map.application;
 
 import generics.map.entities.Product;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class Program {
     public static void main(String[] args) {
 
-        Map<Product, Double> stock = new HashMap<>();
-        
-        Product p1 = new Product("Tv", 900.0);
-        Product p2 = new Product("Notebook", 1200.0);
-        Product p3 = new Product("Tablet", 400.0);
+        List<Product> list = new ArrayList<>();
+        list.add(new Product("TV", 900.00));
+        list.add(new Product("Notebook", 1200.00));
+        list.add(new Product("Tablet", 450.00));
 
-        stock.put(p1, 10000.0);
-        stock.put(p2, 20000.0);
-        stock.put(p3, 15000.0);
+        Comparator<Product> comp = new Comparator<Product>() {
 
-        Product ps = new Product("Tv", 900.0);
+            @Override
+            public int compare(Product p1, Product p2) {
+                return p1.getName().toUpperCase().compareTo(p2.getName().toUpperCase());
+            }
+        };
 
-        System.out.println("Contains 'ps' key: " + stock.containsKey(ps));
+        list.sort(comp);
 
+        list.forEach(System.out::println);
     }
 }
