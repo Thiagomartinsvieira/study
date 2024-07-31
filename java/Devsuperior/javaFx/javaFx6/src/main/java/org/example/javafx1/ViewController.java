@@ -28,7 +28,7 @@ public class ViewController implements Initializable {
     private ObservableList<Person> obsList;
 
     @FXML
-    public void onBtAllAction() {
+    public void v() {
         for (Person person : comboBoxPerson.getItems()) {
             System.out.println(person);
         }
