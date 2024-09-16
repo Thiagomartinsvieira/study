@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-my-component',
@@ -7,6 +8,13 @@ import { Component } from '@angular/core';
   templateUrl: './my-component.component.html',
   styleUrl: './my-component.component.scss'
 })
-export class MyComponentComponent {
+export class MyComponentComponent implements OnInit {
+
+
+ drinks: Observable<String[]> = new Observable<String[]>();
+
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
 }
