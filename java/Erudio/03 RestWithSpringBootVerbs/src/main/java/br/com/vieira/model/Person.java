@@ -1,13 +1,25 @@
 package br.com.vieira.model;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "person")
 public class Person implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "fits_name", nullable = false, length = 80)
     private String firstName;
-    private String lastNAme;
+    @Column(name = "last_name", nullable = false, length = 80)
+    private String lastName;
+    @Column(nullable = false, length = 100)
     private String address;
+    @Column(nullable = false, length = 6)
     private String gender;
 
     public Person() {
@@ -39,11 +51,11 @@ public class Person implements Serializable {
     }
 
     public String getLastNAme() {
-        return lastNAme;
+        return lastName;
     }
 
     public void setLastNAme(String lastNAme) {
-        this.lastNAme = lastNAme;
+        this.lastName = lastNAme;
     }
 
     public String getFirstName() {
@@ -59,11 +71,11 @@ public class Person implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastNAme, person.lastNAme) && Objects.equals(address, person.address) && Objects.equals(gender, person.gender);
+        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(gender, person.gender);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastNAme, address, gender);
+        return Objects.hash(id, firstName, lastName, address, gender);
     }
 }
