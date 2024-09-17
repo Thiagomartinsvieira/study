@@ -1,9 +1,9 @@
 package br.com.vieira.controllers;
 
-import br.com.vieira.model.Person;
+import br.com.vieira.data.vo.v1.PersonVO;
 import br.com.vieira.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,36 +16,29 @@ public class PersonController {
     @Autowired
     private PersonServices service;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Person> findAll()  {
+    @GetMapping
+    public List<PersonVO> findAll() {
         return service.findAll();
     }
 
-    @GetMapping(value="/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Person findById(@PathVariable("id") Long id )  {
+    @GetMapping("/{id}")
+    public PersonVO findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
-    @DeleteMapping(value="/{id}")
-    public ResponseEntity<?> delete(@PathVariable(value = "id") Long id )  {
-        service.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @PostMapping(
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-
-    public Person create(@RequestBody Person person )  {
+    @PostMapping
+    public PersonVO create(@RequestBody PersonVO person) {
         return service.create(person);
     }
 
-    @PutMapping(
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE
-    )
-    public Person update(@RequestBody Person person )  {
+    @PutMapping
+    public PersonVO update(@RequestBody PersonVO person) {
         return service.update(person);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable("id") Long id) {
+        service.delete(id);
+        return ResponseEntity.ok().build();
     }
 }

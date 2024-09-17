@@ -1,28 +1,20 @@
-package br.com.vieira.model;
+package br.com.vieira.data.vo.v1;
 
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "person")
-public class Person implements Serializable {
+public class PersonVO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "fits_name", nullable = false, length = 80)
     private String firstName;
-    @Column(name = "last_name", nullable = false, length = 80)
     private String lastName;
-    @Column(nullable = false, length = 100)
     private String address;
-    @Column(nullable = false, length = 6)
     private String gender;
 
-    public Person() {
+    public PersonVO() {
 
     }
 
@@ -50,11 +42,11 @@ public class Person implements Serializable {
         this.address = address;
     }
 
-    public String getLastNAme() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastNAme) {
+    public void setLastNAme(String lastNAme) {
         this.lastName = lastNAme;
     }
 
@@ -70,7 +62,7 @@ public class Person implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
+        PersonVO person = (PersonVO) o;
         return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(address, person.address) && Objects.equals(gender, person.gender);
     }
 
