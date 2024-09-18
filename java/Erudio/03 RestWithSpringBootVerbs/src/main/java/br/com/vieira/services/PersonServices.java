@@ -1,11 +1,12 @@
 package br.com.vieira.services;
 
+import br.com.vieira.converter.DozerConverter;
+import br.com.vieira.converter.custom.PersonConverter;
 import br.com.vieira.data.vo.v1.PersonVO;
+import br.com.vieira.data.vo.v2.PersonVOV2;
 import br.com.vieira.exceptions.ResourceNotFoundException;
-import br.com.vieira.mapper.DozerMapper;
 import br.com.vieira.model.Person;
 import br.com.vieira.repositories.PersonRepository;
-//import com.github.dozermapper.core.DozerConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,21 +18,31 @@ public class PersonServices {
     @Autowired
     PersonRepository repository;
 
+    @Autowired
+    PersonConverter converter;
+
     public PersonVO create(PersonVO person) {
-        var entity = DozerMapper.parseObject(person, Person.class);
-        var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+        var entity = DozerConverter.parseObject(person, Person.class);
+        var vo = DozerConverter.parseObject(repository.save(entity), PersonVO.class);
+        return vo;
+    }
+
+
+    public PersonVOV2 createV2(PersonVOV2 person) {
+        var entity = converter.convertVOToEntity(person);
+        var vo = converter.convertEntityToVO(repository.save(entity));
         return vo;
     }
 
     public List<PersonVO> findAll() {
-        return DozerMapper.parseListObjects(repository.findAll(), PersonVO.class);
+        return DozerConverter.parseListObjects(repository.findAll(), PersonVO.class);
     }
 
     public PersonVO findById(Long id) {
 
         var entity = repository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("No records found for this ID"));
-        return DozerMapper.parseObject(entity, PersonVO.class);
+        return DozerConverter.parseObject(entity, PersonVO.class);
     }
 
     public PersonVO update(PersonVO person) {
@@ -43,7 +54,7 @@ public class PersonServices {
         entity.setAddress(person.getAddress());
         entity.setGender(person.getGender());
 
-        var vo = DozerMapper.parseObject(repository.save(entity), PersonVO.class);
+        var vo = DozerConverter.parseObject(repository.save(entity), PersonVO.class);
         return vo;
     }
 
