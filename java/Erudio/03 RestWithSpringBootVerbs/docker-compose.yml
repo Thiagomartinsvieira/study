@@ -6,7 +6,7 @@ services:
     container_name: mysql-db-2
     environment:
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: rest_with_spring_bot_vieira
+      MYSQL_DATABASE: rest_with_spring_boot_vieira
     ports:
       - "3306:3306"
     volumes:
