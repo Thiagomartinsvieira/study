@@ -5,6 +5,7 @@ import br.com.vieira.data.vo.v2.PersonVOV2;
 import br.com.vieira.services.PersonServices;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,27 +18,24 @@ public class PersonController {
     @Autowired
     private PersonServices service;
 
-    @GetMapping
+    @GetMapping(produces = {"application/json", "application/xml", "application/x-yaml"})
     public List<PersonVO> findAll() {
         return service.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = {"application/json", "application/xml", "application/x-yaml"})
     public PersonVO findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
-    @PostMapping
+    @PostMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
+            consumes = {"application/json", "application/xml", "application/x-yaml"})
     public PersonVO create(@RequestBody PersonVO person) {
         return service.create(person);
     }
 
-    @PostMapping("/v2")
-    public PersonVOV2 createV2(@RequestBody PersonVOV2 person) {
-        return service.createV2(person);
-    }
-
-    @PutMapping
+    @PutMapping(produces = {"application/json", "application/xml", "application/x-yaml"},
+            consumes = {"application/json", "application/xml", "application/x-yaml"})
     public PersonVO update(@RequestBody PersonVO person) {
         return service.update(person);
     }
@@ -47,5 +45,4 @@ public class PersonController {
         service.delete(id);
         return ResponseEntity.ok().build();
     }
-
 }
