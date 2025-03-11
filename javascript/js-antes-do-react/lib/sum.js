@@ -1,2 +1,0 @@
-export {soma} from './math'
-

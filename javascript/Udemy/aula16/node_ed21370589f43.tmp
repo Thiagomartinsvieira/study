@@ -1,9 +1,0 @@
-/*
-//            123456789
-const nome = 'Thiago Martins'
-console.log(nome[0]);
-*/
-
-//               0        1           2
-const alunos = ['Lucas', 'Sisleide', 'Agatha'];
-console.log(alunos[0]);
